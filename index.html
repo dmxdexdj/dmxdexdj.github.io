@@ -68,7 +68,20 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .intro+.intro{margin-top:14px}
 .ways{margin-top:48px;border:2.5px solid var(--ink);border-radius:22px;padding:26px 30px;background:#fff;box-shadow:5px 5px 0 var(--ink);max-width:70ch}
 .ways h4{font-family:var(--display);font-size:17px;letter-spacing:-.02em;margin-bottom:8px}
+input{font:inherit;font-weight:700;font-size:15px;color:var(--ink);height:44px;border-radius:12px;border:2.5px solid var(--ink);background:#fff;padding:0 14px;width:210px;max-width:100%}
+h3.mid{font-family:var(--display);font-size:20px;letter-spacing:-.03em;margin:64px 0 16px}
+.res{font-size:15px;color:var(--muted);line-height:1.5}
+.res .k{font-family:var(--display);font-size:20px;letter-spacing:-.03em;color:var(--ink);word-break:break-all}
+.res .v{font-family:var(--display);font-size:20px;letter-spacing:-.03em;color:var(--blue)}
+#dv{aspect-ratio:16/7}
+#tv{aspect-ratio:16/3.4}
+ul.term{list-style:none;background:var(--ink);color:#E8E6FF;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;padding:16px 18px;border-radius:12px;display:grid;gap:4px;min-height:96px;overflow-x:auto}
+ul.term li{white-space:pre}
+ul.term li.dim{color:#9E9AC8}
+.tpad{padding:20px;border-top:2.5px solid var(--ink)}
+@media (max-width:760px){#dv{aspect-ratio:4/3.4}#tv{aspect-ratio:4/1.5}}
 </style>
+
 </head>
 <body>
 <div class="wrap">
@@ -108,12 +121,46 @@ button:disabled{opacity:.45;cursor:not-allowed}
 <div><dt>Router</dt><dd>A box that reads where a packet is going and passes it on to the next router along the way.</dd></div>
 <div><dt>NAT</dt><dd>A router trick that lets many devices share one public address. The router keeps a table of who asked for what.</dd></div>
 <div><dt>CGNAT</dt><dd>NAT done by your ISP across lots of homes at once. Cheaper for them, but you lose the ability to accept incoming connections.</dd></div>
+<div><dt>Nameserver</dt><dd>A server that holds the IP addresses for a set of domain names. It’s the one that finally has the answer in a DNS lookup.</dd></div>
+<div><dt>Traceroute</dt><dd>A tool that lists every router between you and a server, with how long each hop took.</dd></div>
 <div><dt>Hop</dt><dd>One jump from one router to the next. The more hops, the longer the trip usually takes.</dd></div>
 <div><dt>Latency</dt><dd>How long data takes to arrive, measured in milliseconds (ms). Lower is better, especially for games.</dd></div>
 </dl>
 <p class="fact">Packets from the same file can take different routes and arrive out of order. Your device puts them back together.</p>
 </section>
+<section id="journey">
+<h3 class="big" style="max-width:22ch">How your data finds its way</h3>
+<p class="intro">Before a website loads, your device needs two answers: where is it, and how do I get there? Names are for people, so the first job is a phone-book lookup called DNS. Then your packets start hopping from router to router.</p>
+
+<h3 class="mid">1. Find the address (DNS)</h3>
+<div class="stage">
+<div class="bar">
+<label>Domain name<input id="d-in" type="text" value="cats.example" autocomplete="off" spellcheck="false"></label>
+<button class="go" id="d-go">Look it up</button>
+<button class="alt" id="d-clr">Clear resolver cache</button>
+</div>
+<canvas id="dv" aria-label="Diagram of a DNS lookup between you, a resolver, a root server, a top-level domain server and a nameserver."></canvas>
+<div class="under">
+<div><h2>The conversation</h2><ol id="d-log"></ol></div>
+<div><h2>Answer</h2><p class="res" id="d-res"></p></div>
+</div>
+</div>
+<p class="note">Type any domain you like. The addresses are made up, but the same name always gets the same one.</p>
+
+<h3 class="mid">2. Follow the hops (traceroute)</h3>
+<div class="stage">
+<div class="bar">
+<label>Destination<select id="t-pre"><option value="near">A server in your city</option><option value="far">A server across the country</option><option value="world">A server on the other side of the world</option></select></label>
+<button class="go" id="t-go">Run traceroute</button>
+</div>
+<canvas id="tv" aria-label="A chain of numbered routers between you and a server. A packet moves along it."></canvas>
+<div class="tpad"><ul class="term" id="t-out"></ul>
+<p class="note">Stars mean a router didn’t answer. Some are set to ignore these probes. Your data still passes through them fine.</p></div>
+</div>
+</section>
+
 <section id="nat">
+
 <h3 class="big" style="max-width:22ch">Why your devices have fake addresses</h3>
 <p class="intro">There are only about 4.3 billion IPv4 addresses, and far more devices than that. So your home shares one public address, and every device inside gets a private one like 192.168.1.10. Your router does the swapping. That trick is called NAT, short for network address translation.</p>
 <p class="intro">Some ISPs have run out of addresses too. They put another NAT, called CGNAT (carrier-grade NAT), in front of whole neighbourhoods. Now your router doesn’t even get a public address. It gets a shared one starting with 100.64, and many homes use the same public address at once. Try both below.</p>
@@ -284,5 +331,75 @@ requestAnimationFrame(draw)}
 addEventListener('resize',resize);resize();setMode('nat');requestAnimationFrame(draw);
 })();
 </script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function Stage(id,N,E,small){
+var cv=$(id),ctx=cv.getContext('2d'),W,H,dpr=Math.min(devicePixelRatio||1,2),tok=null,rip=[],last=0,self={};
+function rs(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+function P(i){return[N[i].x*W,N[i].y*H]}
+function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
+self.set=function(n,e){N=n;E=e};
+self.run=function(s,q,d){tok={cur:s,to:null,u:0,wait:0,label:'',q:q.slice(),done:d};if(reduce)adv(0)};
+function adv(dt){var g=0;while(tok&&g++<200){var t=tok;
+if(t.wait>0){t.wait-=dt;if(t.wait>0)return;continue}
+if(t.to!=null){t.u+=dt/(small?.4:.8);if(t.u>=1){t.cur=t.to;t.to=null;t.u=0;dt=0;continue}return}
+var s=t.q.shift();if(!s){rip.push({n:t.cur,t:0});var d=t.done;tok=null;if(d)d();return}
+if(s.label!=null)t.label=s.label;else if(s.fn)s.fn();else if(s.wait!=null)t.wait=reduce?0:s.wait;else if(s.go!=null){if(reduce)t.cur=s.go;else{t.to=s.go;t.u=0}}}}
+function txt(t,x,y){var w=ctx.measureText(t).width/2+2;ctx.fillText(t,Math.max(w,Math.min(W-w,x)),y)}
+function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;adv(dt);ctx.clearRect(0,0,W,H);
+var r=small?Math.max(7,Math.min(15,W/N.length/2.6)):Math.max(20,Math.min(W,H)*.075);
+ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';
+E.forEach(function(e){var a=P(e[0]),b=P(e[1]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()});
+ctx.textAlign='center';ctx.textBaseline='middle';
+N.forEach(function(n,i){var p=P(i);ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';ctx.fillStyle=n.on?'#3D4BFF':'#fff';ctx.beginPath();ctx.arc(p[0],p[1],r,0,6.283);ctx.fill();ctx.stroke();
+if(small){ctx.font='700 '+(n.e?r*.95:r*.85)+'px '+(n.e?'serif':'"DM Sans",Arial,sans-serif');ctx.fillStyle=n.on?'#fff':'#1B1740';ctx.fillText(n.e||n.s,p[0],p[1]+1)}
+else{ctx.font=r+'px serif';ctx.fillStyle='#000';ctx.fillText(n.e,p[0],p[1]+2);ctx.font='700 12px "DM Sans",Arial,sans-serif';ctx.fillStyle='#1B1740';txt(n.n,p[0],p[1]+r+14);if(n.a){ctx.font='500 11px "DM Sans",Arial,sans-serif';ctx.fillStyle='#5C587D';txt(n.a,p[0],p[1]+r+28)}}});
+rip=rip.filter(function(o){o.t+=dt;var p=P(o.n),k=o.t/.8;if(k>=1)return false;ctx.strokeStyle='rgba(255,210,63,'+(1-k)+')';ctx.lineWidth=4;ctx.beginPath();ctx.arc(p[0],p[1],r+k*26,0,6.283);ctx.stroke();return true});
+if(tok){var a=P(tok.cur),b=tok.to!=null?P(tok.to):a,x=a[0]+(b[0]-a[0])*tok.u,y=a[1]+(b[1]-a[1])*tok.u;
+ctx.fillStyle='#FFD23F';ctx.strokeStyle='#1B1740';ctx.lineWidth=2.5;var s=small?6:8;rr(x-s,y-s,s*2,s*2,4);ctx.fill();ctx.stroke();
+if(tok.label){ctx.font='700 12px "DM Sans",Arial,sans-serif';var tw=ctx.measureText(tok.label).width+16,cx=Math.max(tw/2+4,Math.min(W-tw/2-4,x));ctx.fillStyle='#fff';ctx.lineWidth=2;rr(cx-tw/2,y-s-30,tw,22,11);ctx.fill();ctx.stroke();ctx.fillStyle='#1B1740';ctx.fillText(tok.label,cx,y-s-19)}}
+requestAnimationFrame(draw)}
+addEventListener('resize',rs);rs();requestAnimationFrame(draw);
+return self}
+
+/* DNS */
+var DN=[{n:'You',e:'💻',x:.08,y:.5},{n:'Resolver',a:'your ISP’s helper',e:'🏢',x:.34,y:.5},{n:'Root server',e:'🌍',x:.7,y:.16,a:'knows the .tld servers'},{n:'.example server',e:'🗂️',x:.86,y:.5},{n:'Nameserver',e:'📇',x:.7,y:.8}];
+var D=Stage('dv',DN,[[0,1],[1,2],[1,3],[1,4]],false),cache={},L=[];
+function fake(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}h>>>=0;return[[34,52,104,151,185,203][h%6],(h>>>8)&255,(h>>>16)&255,((h>>>24)%253)+1].join('.')}
+function lg(t){L.push(t);$('d-log').innerHTML=L.map(function(x){return'<li>'+x+'</li>'}).join('')}
+function res(h){$('d-res').innerHTML=h}
+function lookup(){var raw=$('d-in').value.toLowerCase().trim().replace(/^https?:\/\//,'').split('/')[0];
+if(!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(raw)){res('Try a domain like <b>cats.example</b>.');return}
+var tld=raw.split('.').pop(),ip=fake(raw),hit=cache[raw],t=hit?6:88+(Math.random()*12|0);
+DN[3].n='.'+tld+' server';DN[4].a='ns1.'+raw;L=[];$('d-log').innerHTML='';res('Asking…');$('d-go').disabled=true;
+var q=[{label:raw+'?'},{go:1},{fn:function(){lg('You ask your resolver: <b>where is '+raw+'?</b>')}}];
+if(hit)q.push({wait:.4},{fn:function(){lg('The resolver already knows. It remembered the answer from last time.')}},{label:ip},{go:0});
+else q.push({go:2},{fn:function(){lg('The resolver asks a root server. It doesn’t know the site, but knows who handles <b>.'+tld+'</b>.')}},{label:'ask .'+tld},{go:1},{label:raw+'?'},{go:3},
+{fn:function(){lg('The .'+tld+' server doesn’t know the address either, but knows who is in charge of <b>'+raw+'</b>: its nameserver.')}},{label:'ask ns1.'+raw},{go:1},{label:raw+'?'},{go:4},
+{fn:function(){lg('The nameserver has the record. <b>'+raw+' → '+ip+'</b>')}},{label:ip},{go:1},{fn:function(){cache[raw]=1;lg('The resolver remembers it for next time, then tells you.')}},{go:0});
+D.run(0,q,function(){$('d-go').disabled=false;res('<span class="k">'+raw+'</span><br>↓<br><span class="v">'+ip+'</span><br>Took about '+t+' ms'+(hit?' (answered from the resolver’s memory)':'')+'. A name pointing to an IPv4 address is called an A record.')})}
+$('d-go').onclick=lookup;$('d-in').addEventListener('keydown',function(e){if(e.key==='Enter'&&!$('d-go').disabled)lookup()});
+$('d-clr').onclick=function(){cache={};res('Resolver cache cleared. The next lookup does the full trip again.')};
+res('Press <b>Look it up</b>, then look it up again to see the speed-up.');lg('Nothing yet. Press Look it up.');
+
+/* traceroute */
+var PRE={
+near:{t:'a server in your city',h:[['Your router','192.168.1.1',1],['ISP gateway','100.64.0.1',8],['ISP core','203.0.113.1',10],['Local exchange','198.51.100.9',12],['Server','192.0.2.44',14]]},
+far:{t:'a server across the country',h:[['Your router','192.168.1.1',1],['ISP gateway','100.64.0.1',8],['ISP core','203.0.113.1',11],['Regional backbone','198.51.100.9',17],['Transit provider','203.0.113.77',29],['Internet exchange','198.51.100.130',34],['Server network edge','192.0.2.1',37],['Server','192.0.2.44',38]]},
+world:{t:'a server on the other side of the world',h:[['Your router','192.168.1.1',1],['ISP gateway','100.64.0.1',9],['ISP core','203.0.113.1',12],['Transit provider','203.0.113.77',21],['National backbone','198.51.100.9',26],['Cable landing station','198.51.100.66',34],['*',null,0],['Overseas landing station','192.0.2.9',188],['Overseas transit','192.0.2.30',193],['Server network edge','192.0.2.1',199],['Server','192.0.2.44',201]]}};
+var TN=[],T=Stage('tv',TN,[],true),TL=[];
+function build(k){var H=PRE[k].h,n=H.length;TN=[{e:'💻',x:.04,y:.5}];var ed=[];H.forEach(function(h,i){TN.push({s:i+1,x:.04+.92*(i+1)/n,y:.5+(i%2?.2:-.2)});ed.push([i,i+1])});T.set(TN,ed);TL=['traceroute to '+PRE[k].t,''];tl()}
+function tl(){$('t-out').innerHTML=TL.map(function(x){return'<li'+(x.charAt(0)==='·'?' class="dim"':'')+'>'+x+'</li>'}).join('')}
+function pad(s,n){s=String(s);while(s.length<n)s+=' ';return s}
+$('t-pre').onchange=function(){if(!$('t-go').disabled)build(this.value)};
+$('t-go').onclick=function(){var k=$('t-pre').value,H=PRE[k].h;build(k);$('t-go').disabled=true;
+var q=[];H.forEach(function(h,i){q.push({go:i+1},{fn:function(){TN[i+1].on=true;TL.push(pad(i+1,3)+(h[1]?pad(h[0],26)+pad(h[1],16)+h[2]+' ms':'* * *   no reply'));tl()}})});
+T.run(0,q,function(){var best=0,bh=0,prev=0;H.forEach(function(h,i){if(h[1]){if(h[2]-prev>best){best=h[2]-prev;bh=i+1}prev=h[2]}});
+TL.push('');TL.push('· Done: '+H.length+' hops, '+prev+' ms to the server.');TL.push('· Biggest jump: hop '+bh+' (+'+best+' ms)'+(best>60?', most likely a long cable under the sea.':'.'));tl();$('t-go').disabled=false})};
+build('near');
+})();
+</script>
+
 </body>
 </html>
