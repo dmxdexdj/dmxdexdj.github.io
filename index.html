@@ -80,7 +80,73 @@ ul.term li{white-space:pre}
 ul.term li.dim{color:#9E9AC8}
 .tpad{padding:20px;border-top:2.5px solid var(--ink)}
 @media (max-width:760px){#dv{aspect-ratio:4/3.4}#tv{aspect-ratio:4/1.5}}
+.info{padding:12px 20px;font-size:14.5px;border-top:2.5px solid var(--ink);background:#fff;color:var(--muted);min-height:50px}
+.info b{color:var(--ink)}
+#cv,#nv{aspect-ratio:16/8.5}
+@media (max-width:760px){#cv,#nv{aspect-ratio:4/4.4}}
+.scroll{background:#FFF4D1;border:2.5px solid var(--ink);border-radius:12px;max-height:0;opacity:0;overflow:hidden;padding:0 14px;border-width:0;transition:max-height .7s,opacity .4s,padding .4s}
+.scroll.open{max-height:220px;opacity:1;padding:12px 14px;border-width:2.5px}
+.scroll pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;white-space:pre-wrap;word-break:break-all}
+.res .ok{color:#1E9E6A;font-weight:700}.res .no{color:#E0245E;font-weight:700}
+input[type=range]{border:0;padding:0;height:30px;width:min(320px,100%);accent-color:#3D4BFF;background:none}
+.lab-c{aspect-ratio:16/7}
+@media (max-width:760px){.lab-c{aspect-ratio:4/3.4}}
+.how{margin:28px 0 0;background:#fff;border:2.5px solid var(--ink);border-radius:22px;padding:4px 28px 10px;box-shadow:5px 5px 0 var(--ink)}
+.how summary{font-family:var(--display);font-size:17px;letter-spacing:-.02em;cursor:pointer;padding:18px 0;font-weight:700}
+.how h4{font-family:var(--display);font-size:15px;letter-spacing:-.02em;margin:18px 0 6px}
+.how p{color:var(--muted);max-width:74ch;margin:0 0 8px}
+.how p b{color:var(--ink)}
+#dv2{aspect-ratio:16/8}
+@media (max-width:760px){#dv2{aspect-ratio:4/4.6}.how{padding:2px 18px 8px}}
+.fact.r{transform:rotate(1deg)}.fact.pk{background:var(--pink)}.fact.bl{background:var(--blue);color:#fff}
+.fact.sm{margin-top:40px}
+/* varied info cards */
+.cx{margin:44px 0 0;max-width:820px;border:2.5px solid var(--ink);border-radius:22px;background:#fff;box-shadow:5px 5px 0 var(--ink);padding:22px 26px;line-height:1.5}
+.cx .lb{display:inline-block;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--sun);border:2px solid var(--ink);border-radius:999px;padding:3px 10px;margin-bottom:12px}
+.cx p{color:var(--muted);max-width:60ch}.cx p b{color:var(--ink)}
+.cx.stat{display:flex;gap:26px;align-items:center}
+.cx.stat .n{font-family:var(--display);font-weight:700;font-size:clamp(40px,8vw,76px);letter-spacing:-.05em;line-height:1;color:var(--blue);flex:none}
+.cx.stat .n.sm{font-size:clamp(26px,4.4vw,40px)}
+.cx.stat p{font-size:17px}
+.cx.two{padding:0;overflow:hidden}
+.cx.two .hd{padding:16px 26px 0}
+.cx.two .cols{display:grid;grid-template-columns:1fr 1fr}
+.cx.two .cols>div{padding:12px 26px 22px}
+.cx.two .cols>div+div{border-left:2.5px solid var(--ink)}
+.cx.two h5{font-family:var(--display);font-size:14px;letter-spacing:-.02em;margin-bottom:6px}
+.cx.two .c1{background:#FFE3EB}.cx.two .c2{background:#FFF4D1}
+.cx.myth{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:5px 5px 0 var(--pink)}
+.cx.myth .lb{background:var(--pink)}
+.cx.myth .q{font-family:var(--display);font-weight:500;font-size:clamp(18px,2.4vw,24px);letter-spacing:-.03em;line-height:1.25;text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:3px}
+.cx.myth p{color:#CFCBF2;margin-top:12px}.cx.myth p b{color:var(--sun)}
+.cx.word{background:var(--sun);box-shadow:5px 5px 0 var(--ink)}
+.cx.word .big{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,48px);letter-spacing:-.05em;line-height:1}
+.cx.word .big i{font-style:normal;font-weight:500;font-size:.4em;letter-spacing:0;margin-left:10px}
+.cx.word p{color:var(--ink);margin-top:10px}
+.cx.case{background:#FFF4D1;border-style:dashed}
+.cx.case p{color:var(--ink)}
+.cx.eq .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cx.eq .tk{border:2.5px solid var(--ink);border-radius:14px;padding:8px 14px;background:#F1EEFF;font-weight:700;text-align:center;line-height:1.3}
+.cx.eq .tk small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+.cx.eq .op{font-family:var(--display);font-size:24px;font-weight:700}
+.cx.eq .tk.bad{background:var(--pink);color:#fff}.cx.eq .tk.bad small{color:#fff}
+.cx.eq p{margin-top:14px}
+.cx.ba .row{display:flex;flex-wrap:wrap;gap:14px;align-items:stretch}
+.cx.ba .row>div{flex:1 1 220px;border:2.5px solid var(--ink);border-radius:14px;padding:12px 16px}
+.cx.ba .row>div:first-child{background:#FFE3EB}.cx.ba .row>div:last-child{background:#DDF7EA}
+.cx.ba h5{font-family:var(--display);font-size:13px;letter-spacing:-.02em;margin-bottom:4px}
+.cx.ba .ar{flex:none;align-self:center;font-family:var(--display);font-size:26px;font-weight:700;border:0!important;padding:0!important;background:none!important;flex:0 0 auto!important}
+@media (max-width:760px){.cx.stat{flex-direction:column;align-items:flex-start;gap:10px}.cx.two .cols{grid-template-columns:1fr}.cx.two .cols>div+div{border-left:0;border-top:2.5px solid var(--ink)}.cx.ba .ar{transform:rotate(90deg)}}
+.sub{font-family:var(--display);font-size:clamp(18px,2.2vw,24px);letter-spacing:-.04em;line-height:1.15;margin-top:60px;max-width:26ch}.sub+dl{margin-top:20px}
+/* lab intro + toy headers */
+.toyhead{display:flex;align-items:center;gap:18px;margin:72px 0 18px;scroll-margin-top:24px}
+.toyhead .num{flex:none;width:56px;height:56px;border-radius:16px;border:2.5px solid var(--ink);background:var(--sun);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:22px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-6deg)}
+.toyhead h3{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.6vw,28px);letter-spacing:-.04em;line-height:1.1}
+.toyhead p{color:var(--muted);font-size:15.5px;margin-top:6px;max-width:56ch}
+@media (max-width:760px){.toyhead{margin-top:56px;gap:14px}.toyhead .num{width:48px;height:48px;font-size:19px}}
 </style>
+
+
 
 </head>
 <body>
@@ -97,13 +163,17 @@ ul.term li.dim{color:#9E9AC8}
 <label>To<select id="to"></select></label>
 <button class="go" id="send">Send packet</button>
 <button class="alt" id="rand">Surprise me</button>
+<button class="pf" id="chaos" aria-pressed="false">Chaos mode: off</button>
+<button id="fix">Fix everything</button>
 </div>
 <canvas id="cv" aria-label="Network map with devices and routers. Packets travel between them."></canvas>
+<p class="info" id="hint1"></p>
 <div class="under">
 <div>
 <h2>Routers (tap to switch off)</h2>
 <div class="chips" id="chips"></div>
-<p class="note" id="status" aria-live="polite">Everything is on. You can also click a router on the map.</p>
+<p class="note" id="status" aria-live="polite"></p>
+<p class="note" id="stats"></p>
 </div>
 <div>
 <h2>What just happened</h2>
@@ -111,6 +181,19 @@ ul.term li.dim{color:#9E9AC8}
 </div>
 </div>
 </div>
+
+<details class="how"><summary>How it works</summary>
+<h4>Packets, not streams</h4>
+<p>Anything you send over the internet is chopped into small pieces called <b>packets</b>. Each one carries a bit of the data plus a label saying where it came from and where it’s going. The little yellow box on the map is one packet.</p>
+<h4>Routers pass it along</h4>
+<p>A router doesn’t know the whole route. It reads the destination on the label and hands the packet to whichever neighbour is the best next step. That neighbour does the same, and so on until the packet arrives. Each handover is called a <b>hop</b>. This map picks the quickest route by adding up the milliseconds on each link. Real routers work it out by talking to their neighbours, using protocols such as OSPF inside one network and BGP between networks.</p>
+<h4>When things break</h4>
+<p>If a router fails or a cable is cut, the neighbours notice and send traffic another way. That’s why the internet keeps working when a cable breaks. Packets that were on the broken part at that moment are lost. Most web traffic uses <b>TCP</b>, which notices missing pieces and sends them again. Try it: switch off a router, send a packet, and watch the detour. Break too much and there’s no route left at all.</p>
+<h4>Chaos mode</h4>
+<p>Chaos mode keeps breaking and repairing random routers and links while it sends packets, so you can watch the network cope. Real companies do the same on purpose to find weak spots before customers do. It’s called chaos engineering.</p>
+<h4>The counters</h4>
+<p><b>Delivered</b> counts packets that arrived. <b>Lost</b> counts packets that were on the wire when something broke, plus packets that had no route at all.</p>
+</details>
 
 <section>
 <h3 class="big">A tiny glossary</h3>
@@ -123,6 +206,10 @@ ul.term li.dim{color:#9E9AC8}
 <div><dt>CGNAT</dt><dd>NAT done by your ISP across lots of homes at once. Cheaper for them, but you lose the ability to accept incoming connections.</dd></div>
 <div><dt>Nameserver</dt><dd>A server that holds the IP addresses for a set of domain names. It’s the one that finally has the answer in a DNS lookup.</dd></div>
 <div><dt>Traceroute</dt><dd>A tool that lists every router between you and a server, with how long each hop took.</dd></div>
+<div><dt>Firewall</dt><dd>A gatekeeper that allows or blocks packets using a list of rules, such as which port they’re heading for.</dd></div>
+<div><dt>HTTPS</dt><dd>Web traffic scrambled with encryption, so anyone in the middle sees only gibberish.</dd></div>
+<div><dt>VPN</dt><dd>An encrypted tunnel to a server somewhere else. Websites see that server’s address instead of yours.</dd></div>
+<div><dt>Botnet</dt><dd>A group of hacked devices controlled by one attacker, often used to flood a website with requests.</dd></div>
 <div><dt>Hop</dt><dd>One jump from one router to the next. The more hops, the longer the trip usually takes.</dd></div>
 <div><dt>Latency</dt><dd>How long data takes to arrive, measured in milliseconds (ms). Lower is better, especially for games.</dd></div>
 </dl>
@@ -136,10 +223,12 @@ ul.term li.dim{color:#9E9AC8}
 <div class="stage">
 <div class="bar">
 <label>Domain name<input id="d-in" type="text" value="cats.example" autocomplete="off" spellcheck="false"></label>
+<label>Record<select id="d-ty"><option value="A">A (IPv4 address)</option><option value="AAAA">AAAA (IPv6 address)</option><option value="NS">NS (nameservers)</option><option value="MX">MX (mail server)</option></select></label>
 <button class="go" id="d-go">Look it up</button>
 <button class="alt" id="d-clr">Clear resolver cache</button>
 </div>
 <canvas id="dv" aria-label="Diagram of a DNS lookup between you, a resolver, a root server, a top-level domain server and a nameserver."></canvas>
+<p class="info" id="d-info">Tap any server on the map to see what it does.</p>
 <div class="under">
 <div><h2>The conversation</h2><ol id="d-log"></ol></div>
 <div><h2>Answer</h2><p class="res" id="d-res"></p></div>
@@ -147,6 +236,20 @@ ul.term li.dim{color:#9E9AC8}
 </div>
 <p class="note">Type any domain you like. The addresses are made up, but the same name always gets the same one.</p>
 
+<details class="how"><summary>How it works</summary>
+<h4>Names for people, numbers for machines</h4>
+<p>Routers move packets using IP addresses. People prefer names like example.com. <b>DNS</b>, the Domain Name System, turns names into addresses. It happens before almost every page you load.</p>
+<h4>The chain of questions</h4>
+<p>Your device asks a <b>resolver</b>, usually run by your ISP or a public service. The resolver doesn’t know the answer, so it asks a <b>root server</b>, which only knows who looks after each ending such as .com or .org. It points to the <b>TLD server</b> for that ending, which points to the domain’s own <b>nameserver</b>. The nameserver holds the real records and gives the answer. Every step only knows the next step. Nobody holds the whole phone book, which keeps DNS spread out and hard to knock over.</p>
+<h4>Caching</h4>
+<p>The resolver remembers answers for a set time, chosen by the domain’s owner. Look the same name up twice and the second time is answered from memory. Use <b>Clear resolver cache</b> to see the full trip again.</p>
+<h4>Record types</h4>
+<p><b>A</b> points a name to an IPv4 address. <b>AAAA</b> points it to an IPv6 address. <b>NS</b> lists the nameservers in charge of the domain. <b>MX</b> says where email for the domain should go, with a number for priority. Pick one in the dropdown and look it up.</p>
+<h4>In the demo</h4>
+<p>The addresses are made up, and the same name always gets the same one. Real lookups usually take a few tens of milliseconds, and many are answered straight from a cache.</p>
+</details>
+
+<div class="cx ba"><span class="lb">Back in the day</span><div class="row"><div><h5>Before 1983</h5>One shared file, HOSTS.TXT, listed every computer on the network. People downloaded fresh copies by hand.</div><div class="ar" aria-hidden="true">→</div><div><h5>Then came DNS</h5>The phone book was split up and spread across the world, so nobody had to keep one giant list.</div></div></div>
 <h3 class="mid">2. Follow the hops (traceroute)</h3>
 <div class="stage">
 <div class="bar">
@@ -154,9 +257,21 @@ ul.term li.dim{color:#9E9AC8}
 <button class="go" id="t-go">Run traceroute</button>
 </div>
 <canvas id="tv" aria-label="A chain of numbered routers between you and a server. A packet moves along it."></canvas>
+<p class="info" id="t-info"></p>
 <div class="tpad"><ul class="term" id="t-out"></ul>
 <p class="note">Stars mean a router didn’t answer. Some are set to ignore these probes. Your data still passes through them fine.</p></div>
 </div>
+<details class="how"><summary>How it works</summary>
+<h4>Counting down with TTL</h4>
+<p>Every packet has a number called <b>TTL</b> (time to live). Each router subtracts one as the packet passes. If it reaches zero, the router throws the packet away and sends a short message back saying so. Traceroute uses that on purpose. It sends a packet with TTL 1, and the first router replies. Then TTL 2, and the second router replies. And so on until the packet reaches the server. Each reply reveals who that router is and how long the trip took.</p>
+<h4>Reading the list</h4>
+<p>The times are round trips: there and back. Normally they grow a little at each hop. A big jump usually means distance or a slow link. Light in glass fibre travels about 200 km every millisecond, so each 1,000 km adds about 5 ms each way. That’s why the world trip jumps when the cable crosses the sea.</p>
+<h4>Stars</h4>
+<p>A line of stars means a router didn’t reply. Many are set to ignore these probes. Your data still passes through them fine.</p>
+<h4>Try it</h4>
+<p>Run all three destinations and compare the number of hops and the total time. Tap any hop on the map to see what kind of router it is.</p>
+</details>
+<div class="cx stat"><div class="n">95%+</div><p>of international internet traffic travels through <b>cables on the sea floor</b>, not through satellites.</p></div>
 </section>
 
 <section id="nat">
@@ -171,9 +286,11 @@ ul.term li.dim{color:#9E9AC8}
 <label>Send from<select id="n-dev"><option value="0">💻 Laptop</option><option value="1">📱 Phone</option></select></label>
 <button class="go" id="n-out">Send request out</button>
 <button class="alt" id="n-in">Friend connects in</button>
+<button class="alt" id="n-nb" style="display:none">Neighbour sends request</button>
 <button class="pf" id="n-pf" aria-pressed="false">Port forward: off</button>
 </div>
 <canvas id="nv" aria-label="Diagram of devices, your router, your ISP and the internet. Tokens show addresses being swapped as packets travel."></canvas>
+<p class="info" id="n-info">Tap any device or box on the map to see what it does.</p>
 <div class="under">
 <div>
 <h2>Your router’s table</h2>
@@ -188,6 +305,20 @@ ul.term li.dim{color:#9E9AC8}
 </div>
 </div>
 
+<details class="how"><summary>How it works</summary>
+<h4>Why NAT exists</h4>
+<p>An IPv4 address is 32 bits long, which gives about 4.3 billion addresses. That’s fewer than the number of devices in the world. So some ranges, such as 192.168.x.x, 10.x.x.x and 172.16 to 172.31, are set aside as <b>private</b>. Anyone can reuse them inside their own network because they never appear on the public internet.</p>
+<h4>What the router does</h4>
+<p>When your laptop sends a request, it uses a private address and a port number. Your router swaps that for its own public address and a fresh port, and writes the pair into a table. When the reply comes back to that public address and port, the router looks it up, swaps back, and hands it to the right device. The ports are what keep many devices apart behind one address.</p>
+<h4>Why connections from outside fail</h4>
+<p>A packet that arrives out of the blue has no entry in the table. The router has no idea which device it’s meant for, so it drops it. <b>Port forwarding</b> fixes that by adding an entry by hand: anything arriving on port 25565, say, goes to your laptop. That’s how people host game servers at home.</p>
+<h4>CGNAT</h4>
+<p>Some ISPs don’t have enough public addresses for every customer. So they run a big NAT of their own, called <b>carrier-grade NAT</b>. Your router gets an address from the 100.64.0.0/10 range, which is reserved for exactly this, and the ISP’s box swaps it for a public address shared by many homes. Now there are two tables in a row. You can set a port-forwarding rule on your router, but the ISP’s box has no such rule, so it drops the packet before it ever reaches you.</p>
+<h4>Things to try</h4>
+<p>Send a request out in each mode and watch the tables fill in. Press <b>Friend connects in</b> with port forward off, then on. Then switch to CGNAT and try it again. In CGNAT mode, press <b>Neighbour sends request</b> to see other homes using the same public address with different ports.</p>
+</details>
+
+<div class="cx two"><div class="hd"><span class="lb">Same address, no clash</span></div><div class="cols"><div class="c1"><h5>Your laptop</h5><b>192.168.1.10</b><p>Inside your home.</p></div><div class="c2"><h5>A stranger’s laptop</h5><b>192.168.1.10</b><p>Inside theirs. Same number, and nobody minds, because the two networks never meet on the internet.</p></div></div></div>
 <h3 class="big" style="margin-top:96px;max-width:22ch">Why CGNAT is such a pain</h3>
 <dl>
 <div><dt>You can’t host anything</dt><dd>Game servers, cameras and remote desktop all need someone outside to reach in. Behind CGNAT there’s no way in, because the ISP’s box drops anything nobody asked for.</dd></div>
@@ -199,11 +330,188 @@ ul.term li.dim{color:#9E9AC8}
 </dl>
 <div class="ways"><h4>Ways around it</h4><p>Ask your ISP for a public IPv4 address (some charge a small fee). Use IPv6, which has so many addresses that NAT isn’t needed. Or rent a small server somewhere and tunnel your traffic through it.</p></div>
 </section>
+<section id="lab">
+<h3 class="big" style="max-width:22ch">The lab: security, speed and the airwaves</h3>
+<p class="intro">Six small experiments on how networks get spied on, defended, flooded and shared. Pick one and play with it.</p>
+
+<h3 class="big" style="margin-top:88px;max-width:22ch">Who else is reading your login?</h3>
+<p class="intro">Between you and a website there are lots of devices you don’t control. If your data isn’t locked, any of them can read it. Add a rogue router to the path and see for yourself.</p>
+<div class="stage">
+<div class="bar">
+<button class="pf" id="mm-evil" aria-pressed="false">Drop evil router: off</button>
+<button class="pf" id="mm-tls" aria-pressed="false">HTTPS: off</button>
+<button class="go" id="mm-send">Send my login</button>
+</div>
+<canvas id="mv" class="lab-c" aria-label="You, a Wi-Fi router, an optional evil router and a website. A packet carrying a login travels between them."></canvas>
+<div class="under">
+<div><h2>What the evil router sees</h2><div class="scroll" id="mm-sc"><pre id="mm-pre"></pre></div><p class="note">Drop the evil router on the path, then send a login. The scroll unrolls when it grabs a packet. Now switch HTTPS on and try again.</p></div>
+<div><h2>What happened</h2><ol id="mm-log"><li class="empty">Nothing sent yet.</li></ol></div>
+</div></div>
+
+<details class="how"><summary>How it works</summary>
+<h4>Why plain text is risky</h4>
+<p>Your data passes through many devices you don’t control: the café’s router, your internet provider, and others. If it isn’t encrypted, anyone along the way can read it. The “evil router” stands for a rogue Wi-Fi hotspot, a hacked router, or someone on your network tricking your device into sending traffic through them. Sitting in the path and reading or changing traffic is called a <b>man-in-the-middle attack</b>.</p>
+<h4>What HTTPS does</h4>
+<p>HTTPS is normal web traffic wrapped in <b>TLS</b>. Your browser and the website first agree on a secret key using public-key maths, in a way that doesn’t reveal the key to anyone watching. From then on everything is scrambled with that key. The evil router sees only gibberish, and any tampering is detected.</p>
+<h4>Certificates</h4>
+<p>The website proves who it is with a <b>certificate</b> signed by an authority your device already trusts. That stops the evil router pretending to be the site. If it tries, your browser shows a warning.</p>
+<h4>What HTTPS doesn’t hide</h4>
+<p>The evil router can still see which address you’re talking to, and roughly how much data you send. It just can’t read what’s inside.</p>
+<h4>In the demo</h4>
+<p>Drop the evil router on the path and send a login. The scroll shows what it reads. Then switch HTTPS on: the packet turns into a padlock and the scroll shows scrambled symbols. The gibberish here is random characters. Real encrypted data looks like random bytes.</p>
+</details>
+<div class="ways"><h4>How to stay safe</h4><p>Look for https:// in the address bar before you type a password. Be careful on public Wi-Fi, and use your phone’s data or a VPN if you can’t trust the network. Keep your devices updated, because updates close the holes attackers use.</p></div>
+
+<div class="cx two"><div class="hd"><span class="lb">What HTTPS hides</span></div><div class="cols"><div class="c2"><h5>🔒 Hidden</h5><p>Your password, the page you’re on, everything you type and read.</p></div><div class="c1"><h5>👀 Still visible</h5><p>Which site you’re talking to, and roughly how much data you send.</p></div></div></div>
+<div class="toyhead"><span class="num" aria-hidden="true">🌍</span><div><h3>Teleport to the UK</h3><p>Your request gets turned away at the border. A tunnel gets you through.</p></div></div>
+<div class="stage">
+<div class="bar">
+<button class="pf" id="vp-on" aria-pressed="false">VPN: off</button>
+<button class="go" id="vp-send">Open BBC iPlayer</button>
+</div>
+<canvas id="vv" class="lab-c" aria-label="You are outside the UK. A VPN server and BBC iPlayer are in the United Kingdom."></canvas>
+<p class="info" id="vp-cap">The VPN is off. Your request goes straight to iPlayer from your own address.</p>
+<div class="under">
+<div><h2>What BBC iPlayer sees</h2><p class="res" id="vp-res">Nothing yet. Press the button.</p></div>
+<div><h2>Step by step</h2><ol id="vp-steps"><li class="empty">Press the button to start.</li></ol></div>
+</div></div>
+<details class="how"><summary>How it works</summary>
+<h4>The problem</h4>
+<p>BBC iPlayer is made for people in the United Kingdom. When you open it, the BBC’s servers look at the <b>IP address</b> your request came from and check it against a database that says which country each address belongs to. An address from outside the UK gets turned away.</p>
+<h4>What a VPN does</h4>
+<p>A VPN (virtual private network) is an app that builds an <b>encrypted tunnel</b> from your device to a server run by the VPN company. Pick a server in the UK and your request goes into the tunnel, comes out at that server, and is sent on to iPlayer from the server’s own UK address. iPlayer sees the VPN server, not you. The video then comes back the same way: to the VPN server, down the tunnel, and to your screen.</p>
+<h4>The second benefit: privacy on the way</h4>
+<p>Between you and the VPN server everything is encrypted. Someone on the café Wi-Fi, or your internet provider, can see that you’re talking to a VPN but not which sites you visit. The catch is that the VPN company can now see that instead, so you’re moving trust from one company to another, not removing it.</p>
+<h4>What a VPN doesn’t do</h4>
+<p>It doesn’t make you anonymous. Logging in, cookies and your browser can still identify you. Streaming services also try to spot and block the addresses of known VPN servers, so it often doesn’t work. Some services forbid this in their terms, so check before you try it for real.</p>
+<h4>In the demo</h4>
+<p>The purple area is your country and the green area is the UK. The glowing pipe is the encrypted tunnel. Try it with the VPN off, then on, and compare the two lists on the right.</p>
+</details>
+<h4 class="sub">What a VPN is good for</h4>
+<dl><div><dt>Café and hotel Wi-Fi</dt><dd>Everything between you and the VPN server is scrambled, so other people on the same network can’t read it.</dd></div><div><dt>Hiding from your provider</dt><dd>Your internet provider can see that you’re using a VPN, but not which sites you visit.</dd></div><div><dt>Changing your location</dt><dd>Websites see the VPN server’s address, so you appear to be wherever it is.</dd></div><div><dt>What it can’t do</dt><dd>It won’t stop a site recognising you once you log in, and it won’t protect you from a bad download.</dd></div></dl>
+
+<div class="cx myth"><span class="lb">Myth</span><p class="q" style="margin:0;color:#fff">“A VPN makes me anonymous.”</p><p><b>Reality:</b> it moves who can see your traffic, from your internet provider to the VPN company. Logins, cookies and your browser can still identify you.</p></div>
+<div class="toyhead"><span class="num" aria-hidden="true">🛡️</span><div><h3>Be the bouncer</h3><p>Customers on the left, attackers mixed in. Block the right ports before five get past.</p></div></div>
+<div class="stage">
+<div class="bar">
+<button class="go" id="fw-go">Start game</button>
+<button id="fw-reset">Reset</button>
+</div>
+<canvas id="fv" class="lab-c" aria-label="Game: packets travel from the internet toward a private network. A firewall in the middle blocks or allows each port."></canvas>
+<p class="info" id="fw-info"></p>
+<div class="under">
+<div><h2>Firewall rules (tap to block)</h2><div class="chips" id="fw-rules"></div></div>
+<div><h2>Scoreboard</h2><p class="res" id="fw-score"></p></div>
+</div></div>
+
+<details class="how"><summary>How it works</summary>
+<h4>Ports</h4>
+<p>Every packet has a destination <b>port</b>, a number saying which service on the machine it wants. <b>443</b> is secure web traffic (HTTPS). <b>53</b> is DNS. <b>22</b> is SSH, a way to log in to a machine remotely.</p>
+<h4>What a firewall does</h4>
+<p>A firewall is a gatekeeper with a list of rules. Each rule says allow or block, based on things like the port, the address and which direction the traffic is going. Good firewalls start with <b>block everything</b> and then allow only what’s needed. This game starts the other way round, with everything allowed, so you have to block the bad stuff.</p>
+<h4>Why block SSH and the rest</h4>
+<p>If nobody outside needs to log in remotely, an open SSH port just invites strangers to keep guessing passwords. That’s called brute-forcing. The flood stands for junk sent to random ports to waste a machine’s time or find something open.</p>
+<h4>Remembering conversations</h4>
+<p>Most firewalls are <b>stateful</b>: they remember connections that your side started, so the replies are let back in automatically. Only unrequested traffic from outside gets checked against the rules.</p>
+<h4>The game</h4>
+<p>Let customers in (HTTPS and DNS) and keep the attacks out. Each breach costs a life. Blocking a customer’s port turns them away, which the scoreboard counts too.</p>
+</details>
+
+<div class="cx word"><span class="lb" style="background:#fff">Word origin</span><div class="big">firewall<i>(n.)</i></div><p>Named after the walls built between buildings to stop a fire spreading from one to the next. Same job, different kind of fire.</p></div>
+<h3 class="big" style="margin-top:88px;max-width:22ch">How one attacker borrows a crowd of gadgets</h3>
+<p class="intro">Cameras, routers and TVs get hacked, then wait for an order. When it comes, they all knock on the same website at once. Pick how many, and see where it breaks.</p>
+<div class="stage">
+<div class="bar">
+<label>Bots in the botnet: <b id="dd-n">100</b><input id="dd-s" type="range" min="0" max="100" value="40" aria-label="Number of bots"></label>
+<button class="go" id="bn-go">Send attack command</button>
+<button class="pf" id="bn-sh" aria-pressed="false">Shield: off</button>
+</div>
+<canvas id="dv2" class="lab-c" aria-label="An attacker controls a botnet of hacked devices. When commanded, they flood a website with requests. A real customer tries to reach it too."></canvas>
+<p class="info" id="bn-cap">Choose how many hacked devices the attacker controls, then send the attack command. Turn the shield on to try a defence.</p>
+<div class="under">
+<div><h2>Live stats</h2><p class="res" id="dd-out"></p></div>
+<div><h2>What to watch</h2><p class="res">The yellow dots are attack requests. The green dots are a real customer’s requests. Each bot here sends about 10 requests a second. The router can handle roughly 60,000 a second and the website roughly 4,000. When the website is full, the customer’s requests get dropped too.</p></div>
+</div></div>
+<details class="how"><summary>How it works</summary>
+<h4>What a botnet is</h4>
+<p>A <b>botnet</b> is a large group of hacked devices that one attacker controls remotely. The devices are ordinary things: home computers, Wi-Fi routers, cameras, smart TVs. They usually get infected through weak or default passwords or software that was never updated. Their owners often notice nothing, apart from maybe a slow connection.</p>
+<h4>Command and control</h4>
+<p>The attacker doesn’t talk to each bot one by one. Every bot checks in with a <b>command server</b>, and the attacker sends one order to it that reaches all of them at once. In the demo, press <b>Send attack command</b> and watch the order travel from the attacker to the command server and out to the bots.</p>
+<h4>The flood</h4>
+<p>When the order arrives, every bot starts sending requests to the target. One bot sends very little, but thousands together send a huge amount. Every link, router and server has a limit on how much it can handle. Past that limit, requests queue up, then get dropped, and everyone gets slow responses or none at all, including real customers. That’s a <b>DDoS</b>: a distributed denial of service. It’s distributed because the traffic comes from many places and denial because genuine users are denied service.</p>
+<h4>Why it’s hard to stop</h4>
+<p>The traffic comes from thousands of ordinary-looking devices in many countries, so blocking one address does nothing. The attack requests can also look like normal page visits.</p>
+<h4>Defences</h4>
+<p>Big providers run <b>scrubbing</b> systems that sit in front of a site, spot attack patterns and throw most of the junk away before it arrives. Content delivery networks spread a site across many data centres so no single one is overwhelmed. Sites can also limit how many requests one address may send. Turn on the <b>Shield</b> to see a filter removing most of the attack before it reaches the website.</p>
+<h4>About the numbers</h4>
+<p>The slider sets how many bots the attacker has, from 1 to 100,000. The capacities and the 10-requests-a-second figure are made up for the demo. The 48 icons stand for however many bots you choose.</p>
+</details>
+<h4 class="sub">Why a botnet is so hard to stop</h4>
+<dl><div><dt>Too many addresses</dt><dd>Blocking one address does nothing when the traffic comes from thousands.</dd></div><div><dt>It looks normal</dt><dd>Each request can look like an ordinary visit to the page.</dd></div><div><dt>Spread everywhere</dt><dd>Bots sit in many countries, so there’s no single place to switch off.</dd></div><div><dt>Owners don’t notice</dt><dd>A hacked camera still films. Its owner might only see a slightly slower connection.</dd></div></dl>
+
+<div class="cx case"><span class="lb">Case file</span><p><b>Mirai, 2016.</b> A botnet built mostly from cameras and home routers still using their <b>factory passwords</b>. Nobody had hacked anything clever. They just tried the default login.</p></div>
+<div class="toyhead"><span class="num" aria-hidden="true">🌐</span><div><h3>Run out of internet</h3><p>Eighteen devices, one public address. See what happens when everyone gets their own.</p></div></div>
+<div class="stage">
+<div class="bar">
+<span style="display:flex;gap:8px"><button class="tog" id="iv-4" aria-pressed="true">IPv4</button><button class="tog" id="iv-6" aria-pressed="false">IPv6</button></span>
+</div>
+<canvas id="iv" class="lab-c" aria-label="Eighteen devices. In IPv4 they are crowded behind one address. In IPv6 each has its own."></canvas>
+<p class="info" id="iv-info"></p>
+<div class="under"><div><h2>The numbers</h2><p class="res" id="iv-res"></p></div><div><h2>Tap a device</h2><p class="res" id="iv-dev">Tap any device on the map to see its address.</p></div></div>
+</div>
+
+<details class="how"><summary>How it works</summary>
+<h4>Running out of addresses</h4>
+<p>An IPv4 address is 32 bits, which gives about <b>4.3 billion</b> addresses. That seemed like plenty in the 1980s. Today there are far more devices than that, and the regional registries that hand addresses out have run out of fresh ones. The workaround is NAT, where a whole home shares one public address.</p>
+<h4>A much bigger space</h4>
+<p>An IPv6 address is 128 bits long, which gives about <b>340 undecillion</b> addresses (3.4 followed by 38 zeros). It’s written in hexadecimal groups, like 2001:db8:1::a0. The range starting 2001:db8 is reserved for examples.</p>
+<h4>What changes</h4>
+<p>With IPv6 every device can have its own public address. No sharing, no translation table, no port juggling. Video calls, game hosting and similar things work more directly, and routing gets simpler. ISPs that roll out IPv6 also need less CGNAT.</p>
+<h4>What doesn’t change</h4>
+<p>Having a public address doesn’t mean anyone can connect. A firewall still decides what gets in, and most routers block unrequested incoming traffic by default.</p>
+<h4>Both at once</h4>
+<p>The internet is running IPv4 and IPv6 side by side right now. Most devices can speak both, and the move is slow because every network along the way has to support it.</p>
+</details>
+<h4 class="sub">Why isn’t everyone on IPv6 yet?</h4>
+<dl><div><dt>Everyone has to move</dt><dd>Every network between you and a website has to handle it, and each moves at its own pace.</dd></div><div><dt>NAT works well enough</dt><dd>Sharing one address is annoying, but it keeps things running, so there’s little pressure to change.</dd></div><div><dt>Old gear</dt><dd>Some older devices and software only understand IPv4.</dd></div><div><dt>Both at once</dt><dd>That’s why most networks run IPv4 and IPv6 side by side for now.</dd></div></dl>
+
+
+<div class="cx stat"><div class="n">2011</div><p>The year the last big blocks of fresh IPv4 addresses were handed out. Since then, networks have mostly been <b>reusing and sharing</b> what’s left.</p></div>
+<h3 class="big" style="margin-top:88px;max-width:22ch">Why does Wi-Fi get worse when it’s crowded?</h3>
+<p class="intro">Every device nearby shares one invisible channel. Send at the wrong moment and nobody hears anything. See how devices take turns.</p>
+<div class="stage">
+<div class="bar">
+<button class="go" id="wf-both">Both send at once</button>
+<button class="alt" id="wf-one">Only one sends</button>
+<button id="wf-reset">Reset</button>
+</div>
+<canvas id="wv" class="lab-c" aria-label="A phone and a laptop talk to a Wi-Fi router. If they send at the same moment their packets collide."></canvas>
+<div class="under">
+<div><h2>What happened</h2><ol id="wf-log"><li class="empty">Press a button to start.</li></ol></div>
+<div><h2>The rule</h2><p class="res">Radio can only carry one message at a time. When two collide, both devices wait a random number of slots and try again. Each collision doubles the range, so they soon stop clashing. Old wired Ethernet detected collisions (CSMA/CD). Wi-Fi tries to avoid them (CSMA/CA).</p></div>
+</div></div>
+<details class="how"><summary>How it works</summary>
+<h4>One shared channel</h4>
+<p>Wi-Fi sends data as radio waves, and every device nearby shares the same channel. If two devices transmit at exactly the same moment, the signals garble each other and the router can’t read either. That’s a <b>collision</b>.</p>
+<h4>Listen first</h4>
+<p>Wi-Fi devices listen before they talk. If the channel is busy, they wait. After each message the receiver sends a short acknowledgement. No acknowledgement means something went wrong, so the sender tries again. This approach is called <b>CSMA/CA</b>, carrier sense multiple access with collision avoidance.</p>
+<h4>Random backoff</h4>
+<p>After a collision, each device picks a random waiting time measured in short slots. The first time the choice is 0 or 1 slots. After the next collision it’s 0 to 3, then 0 to 7, and so on. The range doubles each time, so devices soon stop choosing the same slot. If they do pick the same one, they collide again, and that’s what the demo shows. A device that’s waiting for its slot but hears the other one talking keeps listening until the channel is free.</p>
+<h4>And Ethernet?</h4>
+<p>Old Ethernet on a shared cable could detect a collision while sending, then stop and back off. That’s <b>CSMA/CD</b>, collision detection. Modern wired networks use switches and separate send and receive wires, so collisions basically don’t happen any more.</p>
+<h4>In the demo</h4>
+<p>Press <b>Both send at once</b> and watch the collision, the random wait slots and the retry. Run it a few times. Sometimes they pick the same slot again.</p>
+</details>
+<div class="ways"><h4>Things that help</h4><p>Use the 5 GHz band if your router has one, since fewer neighbours crowd it. Plug fixed devices like consoles and TVs in with a cable so they stop using the air. And try a quieter channel in your router’s settings.</p></div>
+
+<div class="cx eq"><span class="lb">Why the Wi-Fi drops when you reheat lunch</span><div class="row"><div class="tk">📶 Wi-Fi<small>2.4 GHz band</small></div><div class="op">≈</div><div class="tk">🍲 Microwave<small>about 2.45 GHz</small></div><div class="op">=</div><div class="tk bad">💥 Interference</div></div><p>They use almost the same radio frequency, so a microwave oven can leak noise that drowns out nearby Wi-Fi.</p></div>
+</section>
 </main>
 <footer>Packet Park is a toy. Real networks have millions of routers, and the times here are made up.</footer>
 </div>
 
 <script>
+if(!CanvasRenderingContext2D.prototype.roundRect){CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){r=Math.min(r,w/2,h/2);this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath()}}
 (function(){
 var cv=document.getElementById('cv'),ctx=cv.getContext('2d'),W,H,dpr=Math.min(devicePixelRatio||1,2);
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -214,54 +522,80 @@ var N=[
 {n:'Router C',s:'C',x:.58,y:.5},{n:'Router D',s:'D',x:.74,y:.22},{n:'Router E',s:'E',x:.74,y:.78},
 {n:'Cat videos',e:'🐱',x:.92,y:.2,end:1},{n:'Game server',e:'🎮',x:.92,y:.8,end:1}];
 var E=[[0,2,4],[1,2,5],[2,3,12],[2,4,9],[3,5,8],[4,5,15],[3,6,21],[4,7,11],[5,6,7],[5,7,10],[6,7,6],[6,8,5],[7,9,4]];
-var down={},packets=[],ripples=[],hl=null,logItems=[];
+var down={},cut={},packets=[],ripples=[],hl=null,logItems=[],st={ok:0,lost:0},pickA=-1,hovE=-1,chaos=false,chT=0,auto=0,on=true,last=0;
+if(window.IntersectionObserver)new IntersectionObserver(function(en){on=en[0].isIntersecting}).observe(cv);
 var ends=[];N.forEach(function(n,i){if(n.end)ends.push(i)});
 ends.forEach(function(i){['from','to'].forEach(function(id){var o=document.createElement('option');o.value=i;o.textContent=N[i].e+' '+N[i].n;$(id).appendChild(o)})});
 $('from').value=0;$('to').value=8;
-function w(a,b){for(var k=0;k<E.length;k++){var e=E[k];if((e[0]==a&&e[1]==b)||(e[0]==b&&e[1]==a))return e[2]}return 0}
+function ei(a,b){for(var k=0;k<E.length;k++){var e=E[k];if((e[0]==a&&e[1]==b)||(e[0]==b&&e[1]==a))return k}return -1}
+function w(a,b){var k=ei(a,b);return k<0?0:E[k][2]}
 function route(a,b){var d={},prev={},done={};N.forEach(function(_,i){d[i]=1e9});d[a]=0;
 for(var c=0;c<N.length;c++){var u=-1;for(var i=0;i<N.length;i++)if(!done[i]&&!down[i]&&(u<0||d[i]<d[u]))u=i;if(u<0||d[u]>=1e9)break;done[u]=1;
-E.forEach(function(e){var v=e[0]==u?e[1]:e[1]==u?e[0]:-1;if(v>=0&&!down[v]&&d[u]+e[2]<d[v]){d[v]=d[u]+e[2];prev[v]=u}})}
+E.forEach(function(e,k){if(cut[k])return;var v=e[0]==u?e[1]:e[1]==u?e[0]:-1;if(v>=0&&!down[v]&&d[u]+e[2]<d[v]){d[v]=d[u]+e[2];prev[v]=u}})}
 if(d[b]>=1e9)return null;var p=[b];while(p[0]!==a)p.unshift(prev[p[0]]);return{path:p,ms:d[b]}}
 function log(t,bad){logItems.unshift({t:t,bad:bad});logItems=logItems.slice(0,5);$('log').innerHTML=logItems.map(function(l){return'<li'+(l.bad?' class="bad"':'')+'>'+l.t+'</li>'}).join('')}
+function stats(){$('stats').textContent='Delivered: '+st.ok+'. Lost: '+st.lost+'.'}
+function nBroken(){var n=0;for(var k in down)if(down[k])n++;for(var j in cut)if(cut[j])n++;return n}
+function refresh(){document.querySelectorAll('#chips .chip').forEach(function(c){var k=+c.dataset.i;c.setAttribute('aria-pressed',!!down[k]);c.textContent=N[k].s+(down[k]?' (off)':'')});
+var n=nBroken();$('status').textContent=n?n+' thing'+(n>1?'s':'')+' broken. Send a packet to see the detour.':'Everything is on. Tap a router or a link on the map to break it.'}
+function hint(){$('hint1').textContent=pickA>=0?'Now tap where '+N[pickA].n+' should send it.':'Tap a device, then another device, to send a packet. Tap a router or a link to break it.'}
 function send(a,b){if(a==b){log('Pick two different devices.',1);return}
 var r=route(a,b);
-if(!r){log('<b>No route</b> from '+N[a].n+' to '+N[b].n+'. Too many routers are off. Switch one back on.',1);ripples.push({n:a,t:0,bad:1});return}
+if(!r){st.lost++;stats();log('<b>No route</b> from '+N[a].n+' to '+N[b].n+'. Too much is broken. Fix something and try again.',1);ripples.push({n:a,t:0,bad:1});return}
 var names=r.path.map(function(i){return N[i].n}).join(' → ');
-if(reduce){hl={path:r.path,t:1};log('<b>Delivered</b> in '+r.ms+' ms, '+(r.path.length-1)+' hops.<br>'+names);return}
+if(reduce){st.ok++;stats();hl={path:r.path,t:1};log('<b>Delivered</b> in '+r.ms+' ms, '+(r.path.length-1)+' hops.<br>'+names);return}
 packets.push({path:r.path,i:0,u:0,ms:r.ms,names:names,a:a,b:b,shown:1})}
-function deliver(p){hl={path:p.path,t:1};ripples.push({n:p.b,t:0});if(p.shown)log('<b>Delivered</b> in '+p.ms+' ms, '+(p.path.length-1)+' hops.<br>'+p.names)}
-function setDown(i,v){down[i]=v;var n=Object.keys(down).filter(function(k){return down[k]}).length;
-document.querySelectorAll('.chip').forEach(function(c){var k=+c.dataset.i;c.setAttribute('aria-pressed',!!down[k]);c.textContent=N[k].s+(down[k]?' (off)':'')});
-$('status').textContent=n?n+' router'+(n>1?'s':'')+' off. Send another packet to see the detour.':'Everything is on. You can also click a router on the map.'}
+function deliver(p){st.ok++;stats();hl={path:p.path,t:1};ripples.push({n:p.b,t:0});if(p.shown)log('<b>Delivered</b> in '+p.ms+' ms, '+(p.path.length-1)+' hops.<br>'+p.names)}
+function lose(p){st.lost++;stats();var a=p.path[p.i],b=p.path[p.i+1];ripples.push({n:a,t:0,bad:1});if(p.shown)log('<b>Packet lost</b> between '+N[a].n+' and '+N[b].n+'. Something broke while it was on its way.',1)}
+function setDown(i,v){down[i]=v;refresh()}
 N.forEach(function(nd,i){if(!nd.end){var b=document.createElement('button');b.className='chip';b.dataset.i=i;b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',nd.n);b.textContent=nd.s;b.onclick=function(){setDown(i,!down[i])};$('chips').appendChild(b)}});
+function rnd(a){return a[Math.random()*a.length|0]}
+function randPair(){var a=rnd(ends),b;do{b=rnd(ends)}while(b==a);return[a,b]}
 $('send').onclick=function(){send(+$('from').value,+$('to').value)};
-$('rand').onclick=function(){var a=ends[Math.random()*ends.length|0],b;do{b=ends[Math.random()*ends.length|0]}while(b==a);$('from').value=a;$('to').value=b;send(a,b)};
+$('rand').onclick=function(){var p=randPair();$('from').value=p[0];$('to').value=p[1];send(p[0],p[1])};
+$('fix').onclick=function(){down={};cut={};refresh();log('<b>Everything fixed.</b> All routers and links are back on.')};
+$('chaos').onclick=function(){chaos=!chaos;chT=3;this.setAttribute('aria-pressed',chaos);this.textContent='Chaos mode: '+(chaos?'on':'off')};
+function chaosStep(){var it=[];N.forEach(function(n,i){if(!n.end)it.push(['r',i])});E.forEach(function(e,k){it.push(['e',k])});
+function isB(x){return x[0]=='r'?down[x[1]]:cut[x[1]]}
+var bro=it.filter(isB),okk=it.filter(function(x){return!isB(x)}),x;
+if(bro.length>=3||(bro.length&&Math.random()<.45)){x=rnd(bro);if(x[0]=='r')down[x[1]]=false;else cut[x[1]]=false}
+else{x=rnd(okk);if(x[0]=='r')down[x[1]]=true;else cut[x[1]]=true}
+refresh();var p=randPair();$('from').value=p[0];$('to').value=p[1];send(p[0],p[1])}
 function resize(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
 function P(i){return[N[i].x*W,N[i].y*H]}
-function R(){return Math.max(20,Math.min(W,H)*.06)}
-cv.addEventListener('click',function(e){var r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
-N.forEach(function(n,i){if(!n.end){var p=P(i);if(Math.hypot(p[0]-x,p[1]-y)<R()+6)setDown(i,!down[i])}})});
-cv.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=0;
-N.forEach(function(n,i){if(!n.end){var p=P(i);if(Math.hypot(p[0]-x,p[1]-y)<R()+6)h=1}});cv.style.cursor=h?'pointer':'default'});
+function R(){return Math.max(18,Math.min(W,H)*.06)}
+function pos(e){var r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}
+function hitN(x,y){for(var i=0;i<N.length;i++){var p=P(i);if(Math.hypot(p[0]-x,p[1]-y)<R()+8)return i}return -1}
+function sd(px,py,a,b){var dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((px-a[0])*dx+(py-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(px-a[0]-t*dx,py-a[1]-t*dy)}
+function hitE(x,y){for(var k=0;k<E.length;k++)if(sd(x,y,P(E[k][0]),P(E[k][1]))<10)return k;return -1}
+cv.addEventListener('click',function(e){var q=pos(e),i=hitN(q[0],q[1]);
+if(i>=0){if(N[i].end){if(pickA<0)pickA=i;else if(pickA==i)pickA=-1;else{$('from').value=pickA;$('to').value=i;send(pickA,i);pickA=-1}hint()}else setDown(i,!down[i]);return}
+var k=hitE(q[0],q[1]);if(k>=0){cut[k]=!cut[k];refresh()}});
+cv.addEventListener('pointermove',function(e){var q=pos(e),i=hitN(q[0],q[1]);hovE=i>=0?-1:hitE(q[0],q[1]);cv.style.cursor=(i>=0||hovE>=0)?'pointer':'default'});
+cv.addEventListener('pointerleave',function(){hovE=-1});
 function rr(x,y,w_,h_,r){ctx.beginPath();ctx.roundRect(x,y,w_,h_,r)}
-var last=0,auto=0;
-function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;ctx.clearRect(0,0,W,H);var r0=R();
-E.forEach(function(e){var a=P(e[0]),b=P(e[1]),off=down[e[0]]||down[e[1]];ctx.strokeStyle=off?'#CFCBE8':'#1B1740';ctx.lineWidth=2.5;ctx.setLineDash(off?[6,6]:[]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();ctx.setLineDash([])});
+function tx(t,x,y){var m=ctx.measureText(t).width/2+2;ctx.fillText(t,Math.max(m,Math.min(W-m,x)),y)}
+function inHl(a,b){if(!hl)return false;for(var i=0;i<hl.path.length-1;i++){var x=hl.path[i],y=hl.path[i+1];if((x==a&&y==b)||(x==b&&y==a))return true}return false}
+function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;if(!on){requestAnimationFrame(draw);return}
+ctx.clearRect(0,0,W,H);var r0=R(),small=W<560;
+E.forEach(function(e,k){var a=P(e[0]),b=P(e[1]),off=down[e[0]]||down[e[1]]||cut[k];ctx.strokeStyle=cut[k]?'#FF5C8A':off?'#CFCBE8':'#1B1740';ctx.lineWidth=k==hovE?5:2.5;ctx.setLineDash(off?[6,6]:[]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();ctx.setLineDash([])});
 if(hl){hl.t=Math.max(0,hl.t-dt/4);ctx.strokeStyle='rgba(61,75,255,'+hl.t+')';ctx.lineWidth=7;ctx.lineJoin='round';ctx.beginPath();hl.path.forEach(function(i,k){var p=P(i);k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1])});ctx.stroke()}
 ctx.font='700 11.5px "DM Sans",Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-E.forEach(function(e){var a=P(e[0]),b=P(e[1]),mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,t=e[2]+' ms',tw=ctx.measureText(t).width+12;ctx.fillStyle='#fff';ctx.strokeStyle='#1B1740';ctx.lineWidth=1.5;rr(mx-tw/2,my-9,tw,18,9);ctx.fill();ctx.stroke();ctx.fillStyle='#1B1740';ctx.fillText(t,mx,my+.5)});
+E.forEach(function(e,k){if(small&&k!=hovE&&!(hl&&hl.t>0&&inHl(e[0],e[1])))return;var a=P(e[0]),b=P(e[1]),mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,t=cut[k]?'cut':e[2]+' ms',tw=ctx.measureText(t).width+12;ctx.fillStyle=cut[k]?'#FF5C8A':'#fff';ctx.strokeStyle='#1B1740';ctx.lineWidth=1.5;rr(mx-tw/2,my-9,tw,18,9);ctx.fill();ctx.stroke();ctx.fillStyle=cut[k]?'#fff':'#1B1740';ctx.fillText(t,mx,my+.5)});
 N.forEach(function(n,i){var p=P(i),o=down[i];ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';
-if(n.end){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p[0],p[1],r0,0,6.283);ctx.fill();ctx.stroke();ctx.font=(r0*1.0)+'px serif';ctx.fillStyle='#000';ctx.fillText(n.e,p[0],p[1]+2)}
+if(n.end){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p[0],p[1],r0,0,6.283);ctx.fill();ctx.stroke();ctx.font=r0+'px serif';ctx.fillStyle='#000';ctx.fillText(n.e,p[0],p[1]+2);
+if(i==pickA){ctx.strokeStyle='#FF5C8A';ctx.lineWidth=3;ctx.beginPath();ctx.arc(p[0],p[1],r0+6+Math.sin(ts/150)*2,0,6.283);ctx.stroke()}}
 else{ctx.fillStyle=o?'#FF5C8A':'#3D4BFF';rr(p[0]-r0*.85,p[1]-r0*.85,r0*1.7,r0*1.7,r0*.4);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.font='700 '+(r0*.75)+'px Unbounded,Arial,sans-serif';ctx.fillText(o?'×':n.s,p[0],p[1]+1)}
-ctx.font='700 12px "DM Sans",Arial,sans-serif';ctx.fillStyle='#1B1740';ctx.fillText(n.n,p[0],p[1]+r0+14)});
+ctx.font='700 12px "DM Sans",Arial,sans-serif';ctx.fillStyle='#1B1740';tx(n.n,p[0],p[1]+r0+14)});
 ripples=ripples.filter(function(r){r.t+=dt;var p=P(r.n),k=r.t/.8;if(k>=1)return false;ctx.strokeStyle=(r.bad?'rgba(255,92,138,':'rgba(255,210,63,')+(1-k)+')';ctx.lineWidth=4;ctx.beginPath();ctx.arc(p[0],p[1],r0+k*30,0,6.283);ctx.stroke();return true});
-packets=packets.filter(function(p){var a=P(p.path[p.i]),b=P(p.path[p.i+1]),dur=.3+w(p.path[p.i],p.path[p.i+1])*.035;p.u+=dt/dur;
+packets=packets.filter(function(p){var a0=p.path[p.i],b0=p.path[p.i+1];if(down[b0]||cut[ei(a0,b0)]){lose(p);return false}
+var a=P(a0),b=P(b0),dur=.3+w(a0,b0)*.035;p.u+=dt/dur;
 if(p.u>=1){p.i++;p.u=0;if(p.i>=p.path.length-1){deliver(p);return false}a=P(p.path[p.i]);b=P(p.path[p.i+1])}
 var x=a[0]+(b[0]-a[0])*p.u,y=a[1]+(b[1]-a[1])*p.u;ctx.fillStyle='#FFD23F';ctx.strokeStyle='#1B1740';ctx.lineWidth=2.5;rr(x-8,y-8,16,16,4);ctx.fill();ctx.stroke();return true});
-if(!reduce){auto+=dt;if(auto>3.2&&packets.length<2){auto=0;var a=ends[Math.random()*ends.length|0],b;do{b=ends[Math.random()*ends.length|0]}while(b==a);var r=route(a,b);if(r)packets.push({path:r.path,i:0,u:0,ms:r.ms,a:a,b:b,names:'',shown:0})}}
+if(chaos){chT+=dt;if(chT>3.6){chT=0;chaosStep()}}
+else if(!reduce){auto+=dt;if(auto>3.2&&packets.length<2){auto=0;var q=randPair(),r=route(q[0],q[1]);if(r)packets.push({path:r.path,i:0,u:0,ms:r.ms,a:q[0],b:q[1],names:'',shown:0})}}
 requestAnimationFrame(draw)}
-addEventListener('resize',resize);resize();requestAnimationFrame(draw);
+addEventListener('resize',resize);resize();stats();refresh();hint();requestAnimationFrame(draw);
 })();
 </script>
 <script>
@@ -270,16 +604,16 @@ var $=function(i){return document.getElementById(i)},cv=$('nv'),ctx=cv.getContex
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var mode='nat',pf=false,tok=null,ripples=[],logs=[],tabR=[],tabC=[];
 var DIP=['192.168.1.10','192.168.1.11'];
-var ND=[{n:'Laptop',e:'💻',x:.07,y:.27},{n:'Phone',e:'📱',x:.07,y:.73},{n:'Your router',s:'NAT',x:.33,y:.5},{n:'ISP',s:'ISP',x:.62,y:.5},{n:'Internet',e:'🌐',x:.92,y:.5},{n:'Neighbour',e:'🏠',x:.62,y:.14},{n:'Neighbour',e:'🏠',x:.62,y:.86}];
+var ND=[{n:'Laptop',e:'💻',x:.07,y:.27},{n:'Phone',e:'📱',x:.07,y:.73},{n:'Your router',s:'NAT',x:.33,y:.5},{n:'ISP',s:'ISP',x:.62,y:.5},{n:'Internet',e:'🌐',x:.92,y:.5},{n:'Neighbour',e:'🏠',x:.62,y:.16},{n:'Neighbour',e:'🏠',x:.62,y:.8}];
 var ED=[[0,2],[1,2],[2,3],[3,4],[3,5],[3,6]];
 function vis(i){return i<5||mode==='cg'}
 function addr(i){if(i<2)return DIP[i];if(i==2)return mode==='cg'?'100.64.8.21':'203.0.113.7';if(i==3)return mode==='cg'?'198.51.100.20':'';if(i==5)return'100.64.3.9';if(i==6)return'100.64.5.2';return''}
 function log(t,bad){logs.unshift({t:t,bad:bad});logs=logs.slice(0,4);$('n-log').innerHTML=logs.map(function(l){return'<li'+(l.bad?' class="bad"':'')+'>'+l.t+'</li>'}).join('')}
 function render(){var r=(pf?'<li class="rule">Rule: outside :25565 → 192.168.1.10:25565</li>':'')+tabR.slice(0,3).map(function(x){return'<li>'+x+'</li>'}).join('');
 $('n-tr').innerHTML=r||'<li class="empty">Empty until a device sends something.</li>';
-$('n-tc').innerHTML=tabC.slice(0,3).map(function(x){return'<li>'+x+'</li>'}).join('')||'<li class="empty">Empty until a device sends something.</li>';
-$('n-tcw').style.display=mode==='cg'?'block':'none'}
-function busy(v){['n-out','n-in'].forEach(function(i){$(i).disabled=v})}
+$('n-tc').innerHTML=tabC.slice(0,4).map(function(x){return'<li>'+x+'</li>'}).join('')||'<li class="empty">Empty until a device sends something.</li>';
+$('n-tcw').style.display=mode==='cg'?'block':'none';$('n-nb').style.display=mode==='cg'?'':'none'}
+function busy(v){['n-out','n-in','n-nb'].forEach(function(i){$(i).disabled=v})}
 function end(drop){if(tok&&!drop)ripples.push({n:tok.cur,t:0});tok=null;busy(false)}
 function run(start,q){tok={cur:start,to:null,u:0,wait:0,label:'',q:q};busy(true);if(reduce)advance(0)}
 function advance(dt){var g=0;while(tok&&g++<80){var t=tok;
@@ -304,25 +638,32 @@ else{q.push({go:2});
 if(pf)q.push({label:'dst 192.168.1.10:25565'},{go:0},{fn:function(){log('<b>Friend connected.</b> Your router had a port-forward rule, so it knew which device the packet was for.')}});
 else q.push({drop:'<b>Dropped by your router.</b> Nobody inside asked for this, so there’s no table entry and no way to know who it’s for. Try switching port forward on.'})}
 run(4,q)}
+function neighbour(){var f=Math.random()<.5?5:6,ip=f==5?'100.64.3.9':'100.64.5.2',rp=40000+(Math.random()*9000|0),cp=60000+(Math.random()*4000|0);
+run(f,[{label:'src '+ip+':'+rp},{go:3},{fn:function(){tabC.unshift('<b>Neighbour</b> '+ip+':'+rp+' ↔ 198.51.100.20:'+cp);render()}},{label:'src 198.51.100.20:'+cp},{go:4},{wait:.4},{label:'dst 198.51.100.20:'+cp},{go:3},{label:'dst '+ip+':'+rp},{go:f},{fn:function(){log('<b>Neighbour got a reply.</b> Their traffic leaves from the same public address as yours, 198.51.100.20, just on a different port. That’s why many homes can look like one IP.')}}])}
+var NI=['<b>Laptop.</b> Has a private address, 192.168.1.10, that only works inside your home.','<b>Phone.</b> Also private (192.168.1.11). Outside, it shares your public address.','<b>Your router.</b> Swaps private addresses for its own and keeps a table so replies find the right device.','','<b>The internet.</b> Servers out here only ever see the public address, never your private ones.','<b>A neighbour.</b> Another home behind the same CGNAT, sharing the same public address as you.','<b>A neighbour.</b> Another home behind the same CGNAT, sharing the same public address as you.'];
+cv.addEventListener('click',function(e){var r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,rd=Math.max(20,Math.min(W,H)*.065)+10;
+for(var i=0;i<ND.length;i++){if(!vis(i))continue;var p=P(i);if(Math.hypot(p[0]-x,p[1]-y)<rd){ripples.push({n:i,t:0});$('n-info').innerHTML=i==3?(mode==='cg'?'<b>The CGNAT box.</b> A second NAT run by your ISP. It shares one public address between many homes and drops anything nobody asked for.':'<b>Your ISP.</b> In this mode it just passes your traffic along.'):NI[i];break}}});
 function setMode(m){mode=m;tok=null;busy(false);ripples=[];tabR=[];tabC=[];logs=[];
 $('m-nat').setAttribute('aria-pressed',m==='nat');$('m-cg').setAttribute('aria-pressed',m==='cg');render();
 log(m==='cg'?'<b>CGNAT on.</b> Your ISP adds a second swap and shares one public address between many homes.':'<b>Home NAT.</b> Only your router swaps addresses. Send a request out to see it.')}
 $('m-nat').onclick=function(){setMode('nat')};$('m-cg').onclick=function(){setMode('cg')};
-$('n-out').onclick=function(){if(!tok)outbound()};$('n-in').onclick=function(){if(!tok)inbound()};
+$('n-out').onclick=function(){if(!tok)outbound()};$('n-in').onclick=function(){if(!tok)inbound()};$('n-nb').onclick=function(){if(!tok)neighbour()};
 $('n-pf').onclick=function(){pf=!pf;this.setAttribute('aria-pressed',pf);this.textContent='Port forward: '+(pf?'on':'off');render()};
 function resize(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
 function P(i){return[ND[i].x*W,ND[i].y*H]}
 function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
 var last=0;
-function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;advance(dt);ctx.clearRect(0,0,W,H);var r0=Math.max(20,Math.min(W,H)*.065),cg=mode==='cg';
+function tx(t,x,y){var m=ctx.measureText(t).width/2+2;ctx.fillText(t,Math.max(m,Math.min(W-m,x)),y)}
+var on=true;if(window.IntersectionObserver)new IntersectionObserver(function(en){on=en[0].isIntersecting}).observe(cv);
+function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;if(!on){requestAnimationFrame(draw);return}advance(dt);ctx.clearRect(0,0,W,H);var r0=Math.max(20,Math.min(W,H)*.065),cg=mode==='cg';
 ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';ctx.setLineDash([]);
 ED.forEach(function(e){if(!vis(e[0])||!vis(e[1]))return;var a=P(e[0]),b=P(e[1]);ctx.setLineDash(e[0]==3&&e[1]>4?[6,6]:[]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()});ctx.setLineDash([]);
 ctx.textAlign='center';ctx.textBaseline='middle';
 ND.forEach(function(n,i){if(!vis(i))return;var p=P(i);ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';
 if(n.e){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p[0],p[1],r0,0,6.283);ctx.fill();ctx.stroke();ctx.font=r0+'px serif';ctx.fillStyle='#000';ctx.fillText(n.e,p[0],p[1]+2)}
 else{var isp=i==3;ctx.fillStyle=isp?(cg?'#FFD23F':'#CFCBE8'):'#3D4BFF';rr(p[0]-r0*.9,p[1]-r0*.85,r0*1.8,r0*1.7,r0*.4);ctx.fill();ctx.stroke();ctx.fillStyle=isp?'#1B1740':'#fff';ctx.font='700 '+(r0*.5)+'px Unbounded,Arial,sans-serif';ctx.fillText(isp&&cg?'CG':n.s,p[0],p[1]+1)}
-ctx.font='700 12px "DM Sans",Arial,sans-serif';ctx.fillStyle='#1B1740';ctx.fillText(i==3&&cg?'ISP CGNAT':n.n,p[0],p[1]+r0+14);
-var a=addr(i);if(a){ctx.font='500 11px "DM Sans",Arial,sans-serif';ctx.fillStyle='#5C587D';ctx.fillText(a,p[0],p[1]+r0+28)}});
+ctx.font='700 12px "DM Sans",Arial,sans-serif';ctx.fillStyle='#1B1740';tx(i==3&&cg?'ISP CGNAT':n.n,p[0],p[1]+r0+14);
+var a=addr(i);if(a){ctx.font='500 11px "DM Sans",Arial,sans-serif';ctx.fillStyle='#5C587D';tx(a,p[0],p[1]+r0+28)}});
 ripples=ripples.filter(function(r){r.t+=dt;var p=P(r.n),k=r.t/.8;if(k>=1)return false;ctx.strokeStyle=(r.bad?'rgba(255,92,138,':'rgba(255,210,63,')+(1-k)+')';ctx.lineWidth=4;ctx.beginPath();ctx.arc(p[0],p[1],r0+k*30,0,6.283);ctx.stroke();return true});
 if(tok){var a=P(tok.cur),b=tok.to!=null?P(tok.to):a,x=a[0]+(b[0]-a[0])*tok.u,y=a[1]+(b[1]-a[1])*tok.u;
 ctx.fillStyle='#FFD23F';ctx.strokeStyle='#1B1740';ctx.lineWidth=2.5;rr(x-8,y-8,16,16,4);ctx.fill();ctx.stroke();
@@ -340,6 +681,11 @@ function rs(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;
 function P(i){return[N[i].x*W,N[i].y*H]}
 function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
 self.set=function(n,e){N=n;E=e};
+var on=true;if(window.IntersectionObserver)new IntersectionObserver(function(en){on=en[0].isIntersecting}).observe(cv);
+function rad(){return small?Math.max(7,Math.min(15,W/N.length/2.6)):Math.max(20,Math.min(W,H)*.075)}
+function hit(e){var r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;for(var i=0;i<N.length;i++){var p=P(i);if(Math.hypot(p[0]-x,p[1]-y)<rad()+10)return i}return -1}
+cv.addEventListener('click',function(e){var i=hit(e);if(i>=0){rip.push({n:i,t:0});if(self.pick)self.pick(i)}});
+cv.addEventListener('pointermove',function(e){cv.style.cursor=hit(e)>=0?'pointer':'default'});
 self.run=function(s,q,d){tok={cur:s,to:null,u:0,wait:0,label:'',q:q.slice(),done:d};if(reduce)adv(0)};
 function adv(dt){var g=0;while(tok&&g++<200){var t=tok;
 if(t.wait>0){t.wait-=dt;if(t.wait>0)return;continue}
@@ -347,7 +693,7 @@ if(t.to!=null){t.u+=dt/(small?.4:.8);if(t.u>=1){t.cur=t.to;t.to=null;t.u=0;dt=0;
 var s=t.q.shift();if(!s){rip.push({n:t.cur,t:0});var d=t.done;tok=null;if(d)d();return}
 if(s.label!=null)t.label=s.label;else if(s.fn)s.fn();else if(s.wait!=null)t.wait=reduce?0:s.wait;else if(s.go!=null){if(reduce)t.cur=s.go;else{t.to=s.go;t.u=0}}}}
 function txt(t,x,y){var w=ctx.measureText(t).width/2+2;ctx.fillText(t,Math.max(w,Math.min(W-w,x)),y)}
-function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;adv(dt);ctx.clearRect(0,0,W,H);
+function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;if(!on){requestAnimationFrame(draw);return}adv(dt);ctx.clearRect(0,0,W,H);
 var r=small?Math.max(7,Math.min(15,W/N.length/2.6)):Math.max(20,Math.min(W,H)*.075);
 ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';
 E.forEach(function(e){var a=P(e[0]),b=P(e[1]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()});
@@ -366,21 +712,27 @@ return self}
 /* DNS */
 var DN=[{n:'You',e:'💻',x:.08,y:.5},{n:'Resolver',a:'your ISP’s helper',e:'🏢',x:.34,y:.5},{n:'Root server',e:'🌍',x:.7,y:.16,a:'knows the .tld servers'},{n:'.example server',e:'🗂️',x:.86,y:.5},{n:'Nameserver',e:'📇',x:.7,y:.8}];
 var D=Stage('dv',DN,[[0,1],[1,2],[1,3],[1,4]],false),cache={},L=[];
-function fake(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}h>>>=0;return[[34,52,104,151,185,203][h%6],(h>>>8)&255,(h>>>16)&255,((h>>>24)%253)+1].join('.')}
+function hh(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function fake(s){var h=hh(s);return[[34,52,104,151,185,203][h%6],(h>>>8)&255,(h>>>16)&255,((h>>>24)%253)+1].join('.')}
+function fake6(s){var h=hh(s);return'2001:db8:'+(h&65535).toString(16)+':'+(h>>>16).toString(16)+'::1'}
+var TYD={A:'An A record points a name to an IPv4 address.',AAAA:'An AAAA record points a name to an IPv6 address.',NS:'NS records say which servers are in charge of a domain.',MX:'An MX record says where email for the domain goes. The number is its priority.'};
+function value(raw,ty){return ty==='A'?fake(raw):ty==='AAAA'?fake6(raw):ty==='NS'?'ns1.'+raw+'<br>ns2.'+raw:'10 mail.'+raw}
 function lg(t){L.push(t);$('d-log').innerHTML=L.map(function(x){return'<li>'+x+'</li>'}).join('')}
 function res(h){$('d-res').innerHTML=h}
-function lookup(){var raw=$('d-in').value.toLowerCase().trim().replace(/^https?:\/\//,'').split('/')[0];
+function lookup(){var raw=$('d-in').value.toLowerCase().trim().replace(/^https?:\/\//,'').split('/')[0],ty=$('d-ty').value;
 if(!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(raw)){res('Try a domain like <b>cats.example</b>.');return}
-var tld=raw.split('.').pop(),ip=fake(raw),hit=cache[raw],t=hit?6:88+(Math.random()*12|0);
+var tld=raw.split('.').pop(),val=value(raw,ty),plain=val.replace('<br>',' and '),key=raw+'|'+ty,hit=cache[key],t=hit?6:88+(Math.random()*12|0),short=ty==='NS'?'ns1.'+raw:val;
 DN[3].n='.'+tld+' server';DN[4].a='ns1.'+raw;L=[];$('d-log').innerHTML='';res('Asking…');$('d-go').disabled=true;
-var q=[{label:raw+'?'},{go:1},{fn:function(){lg('You ask your resolver: <b>where is '+raw+'?</b>')}}];
-if(hit)q.push({wait:.4},{fn:function(){lg('The resolver already knows. It remembered the answer from last time.')}},{label:ip},{go:0});
-else q.push({go:2},{fn:function(){lg('The resolver asks a root server. It doesn’t know the site, but knows who handles <b>.'+tld+'</b>.')}},{label:'ask .'+tld},{go:1},{label:raw+'?'},{go:3},
-{fn:function(){lg('The .'+tld+' server doesn’t know the address either, but knows who is in charge of <b>'+raw+'</b>: its nameserver.')}},{label:'ask ns1.'+raw},{go:1},{label:raw+'?'},{go:4},
-{fn:function(){lg('The nameserver has the record. <b>'+raw+' → '+ip+'</b>')}},{label:ip},{go:1},{fn:function(){cache[raw]=1;lg('The resolver remembers it for next time, then tells you.')}},{go:0});
-D.run(0,q,function(){$('d-go').disabled=false;res('<span class="k">'+raw+'</span><br>↓<br><span class="v">'+ip+'</span><br>Took about '+t+' ms'+(hit?' (answered from the resolver’s memory)':'')+'. A name pointing to an IPv4 address is called an A record.')})}
+var q=[{label:raw+' '+ty+'?'},{go:1},{fn:function(){lg('You ask your resolver for the <b>'+ty+'</b> record of <b>'+raw+'</b>.')}}];
+if(hit)q.push({wait:.4},{fn:function(){lg('The resolver already knows. It remembered the answer from last time.')}},{label:short},{go:0});
+else q.push({go:2},{fn:function(){lg('The resolver asks a root server. It doesn’t know the site, but knows who handles <b>.'+tld+'</b>.')}},{label:'ask .'+tld},{go:1},{label:raw+' '+ty+'?'},{go:3},
+{fn:function(){lg('The .'+tld+' server doesn’t know the answer either, but knows who is in charge of <b>'+raw+'</b>: its nameserver.')}},{label:'ask ns1.'+raw},{go:1},{label:raw+' '+ty+'?'},{go:4},
+{fn:function(){lg('The nameserver has the record. <b>'+raw+' → '+plain+'</b>')}},{label:short},{go:1},{fn:function(){cache[key]=1;lg('The resolver remembers it for next time, then tells you.')}},{go:0});
+D.run(0,q,function(){$('d-go').disabled=false;res('<span class="k">'+raw+' ('+ty+')</span><br>↓<br><span class="v">'+val+'</span><br>Took about '+t+' ms'+(hit?' (answered from the resolver’s memory)':'')+'. '+TYD[ty])})}
 $('d-go').onclick=lookup;$('d-in').addEventListener('keydown',function(e){if(e.key==='Enter'&&!$('d-go').disabled)lookup()});
 $('d-clr').onclick=function(){cache={};res('Resolver cache cleared. The next lookup does the full trip again.')};
+var DI=['<b>You.</b> Your device doesn’t know any addresses, so it asks a resolver for help.','<b>Resolver.</b> Usually run by your ISP. It does the legwork and remembers answers so repeat lookups are fast.','<b>Root server.</b> Sits at the top of DNS. It doesn’t know websites, only who looks after each ending like .com or .org.','<b>TLD server.</b> Looks after one ending, such as .com. It knows who is in charge of each name under it.','<b>Nameserver.</b> Run by the site owner or their host. It holds the real records and gives the final answer.'];
+D.pick=function(i){$('d-info').innerHTML=DI[i]};
 res('Press <b>Look it up</b>, then look it up again to see the speed-up.');lg('Nothing yet. Press Look it up.');
 
 /* traceroute */
@@ -389,17 +741,176 @@ near:{t:'a server in your city',h:[['Your router','192.168.1.1',1],['ISP gateway
 far:{t:'a server across the country',h:[['Your router','192.168.1.1',1],['ISP gateway','100.64.0.1',8],['ISP core','203.0.113.1',11],['Regional backbone','198.51.100.9',17],['Transit provider','203.0.113.77',29],['Internet exchange','198.51.100.130',34],['Server network edge','192.0.2.1',37],['Server','192.0.2.44',38]]},
 world:{t:'a server on the other side of the world',h:[['Your router','192.168.1.1',1],['ISP gateway','100.64.0.1',9],['ISP core','203.0.113.1',12],['Transit provider','203.0.113.77',21],['National backbone','198.51.100.9',26],['Cable landing station','198.51.100.66',34],['*',null,0],['Overseas landing station','192.0.2.9',188],['Overseas transit','192.0.2.30',193],['Server network edge','192.0.2.1',199],['Server','192.0.2.44',201]]}};
 var TN=[],T=Stage('tv',TN,[],true),TL=[];
-function build(k){var H=PRE[k].h,n=H.length;TN=[{e:'💻',x:.04,y:.5}];var ed=[];H.forEach(function(h,i){TN.push({s:i+1,x:.04+.92*(i+1)/n,y:.5+(i%2?.2:-.2)});ed.push([i,i+1])});T.set(TN,ed);TL=['traceroute to '+PRE[k].t,''];tl()}
+var curKey='near',TI={'Your router':'The box in your home. It’s hop 1 on almost every trace.','ISP gateway':'Where your connection enters your ISP’s network.','ISP core':'Big routers inside your ISP that move lots of traffic fast.','Local exchange':'A building where nearby networks swap traffic.','Regional backbone':'Fast links between cities.','Transit provider':'A company paid to carry traffic between networks.','Internet exchange':'Networks meet here and hand traffic straight to each other.','Server network edge':'The router at the front door of the server’s network.','Server':'You made it. This is the machine you were looking for.','National backbone':'High-capacity cables across the country.','Cable landing station':'Where a cable under the sea comes ashore.','Overseas landing station':'The far end of the undersea cable.','Overseas transit':'Another carrier, on the other side of the ocean.','*':'This router chose not to answer. Your packet still got through it.'};
+function build(k){curKey=k;var H=PRE[k].h,n=H.length;TN=[{e:'💻',x:.04,y:.5}];var ed=[];H.forEach(function(h,i){TN.push({s:i+1,x:.04+.92*(i+1)/n,y:.5+(i%2?.2:-.2)});ed.push([i,i+1])});T.set(TN,ed);TL=['traceroute to '+PRE[k].t,''];tl();$('t-info').textContent='Tap any hop on the map to see what it is.'}
 function tl(){$('t-out').innerHTML=TL.map(function(x){return'<li'+(x.charAt(0)==='·'?' class="dim"':'')+'>'+x+'</li>'}).join('')}
 function pad(s,n){s=String(s);while(s.length<n)s+=' ';return s}
+T.pick=function(i){var el=$('t-info');if(i==0){el.innerHTML='<b>You.</b> This is where every packet starts.';return}var h=PRE[curKey].h[i-1];el.innerHTML='<b>Hop '+i+(h[1]?': '+h[0]:': no reply')+'.</b> '+(h[1]?h[1]+', '+h[2]+' ms from you. ':'')+TI[h[0]]};
 $('t-pre').onchange=function(){if(!$('t-go').disabled)build(this.value)};
-$('t-go').onclick=function(){var k=$('t-pre').value,H=PRE[k].h;build(k);$('t-go').disabled=true;
+$('t-go').onclick=function(){var k=$('t-pre').value,H=PRE[k].h;build(k);$('t-go').disabled=true;$('t-pre').disabled=true;
 var q=[];H.forEach(function(h,i){q.push({go:i+1},{fn:function(){TN[i+1].on=true;TL.push(pad(i+1,3)+(h[1]?pad(h[0],26)+pad(h[1],16)+h[2]+' ms':'* * *   no reply'));tl()}})});
 T.run(0,q,function(){var best=0,bh=0,prev=0;H.forEach(function(h,i){if(h[1]){if(h[2]-prev>best){best=h[2]-prev;bh=i+1}prev=h[2]}});
-TL.push('');TL.push('· Done: '+H.length+' hops, '+prev+' ms to the server.');TL.push('· Biggest jump: hop '+bh+' (+'+best+' ms)'+(best>60?', most likely a long cable under the sea.':'.'));tl();$('t-go').disabled=false})};
+TL.push('');TL.push('· Done: '+H.length+' hops, '+prev+' ms to the server.');TL.push('· Biggest jump: hop '+bh+' (+'+best+' ms)'+(best>60?', most likely a long cable under the sea.':'.'));tl();$('t-go').disabled=false;$('t-pre').disabled=false})};
 build('near');
 })();
 </script>
 
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},rnd=function(a){return a[Math.random()*a.length|0]};
+var INK='#1B1740',BLUE='#3D4BFF',PINK='#FF5C8A',SUN='#FFD23F',GRN='#3DDC97',LG={};
+function mk(id,draw,click){var cv=$(id),ctx=cv.getContext('2d'),o={},dpr=Math.min(devicePixelRatio||1,2),on=true,last=0;
+function rs(){o.W=cv.clientWidth;o.H=cv.clientHeight;cv.width=o.W*dpr;cv.height=o.H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+if(window.IntersectionObserver)new IntersectionObserver(function(e){on=e[0].isIntersecting}).observe(cv);
+function f(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;if(on){ctx.clearRect(0,0,o.W,o.H);ctx.textAlign='center';ctx.textBaseline='middle';draw(ctx,o.W,o.H,dt,ts)}requestAnimationFrame(f)}
+if(click)cv.addEventListener('click',function(e){var r=cv.getBoundingClientRect();click(e.clientX-r.left,e.clientY-r.top)});
+addEventListener('resize',rs);rs();requestAnimationFrame(f);return o}
+function node(c,x,y,r,e,fill){c.fillStyle=fill||'#fff';c.strokeStyle=INK;c.lineWidth=2.5;c.beginPath();c.arc(x,y,r,0,6.283);c.fill();c.stroke();c.font=r+'px serif';c.fillStyle='#000';c.fillText(e,x,y+2)}
+function txt(c,t,x,y,col,W,f){c.font=f||'700 12px "DM Sans",Arial,sans-serif';c.fillStyle=col||INK;var m=c.measureText(t).width/2+2;c.fillText(t,W?Math.max(m,Math.min(W-m,x)):x,y)}
+function line(c,a,b,col,w,d){c.strokeStyle=col||INK;c.lineWidth=w||2.5;c.setLineDash(d||[]);c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);c.stroke();c.setLineDash([])}
+function chip(c,t,x,y,W,col){c.font='700 12px "DM Sans",Arial,sans-serif';var w=c.measureText(t).width+16;x=Math.max(w/2+4,Math.min(W-w/2-4,x));c.fillStyle=col||'#fff';c.strokeStyle=INK;c.lineWidth=2;c.beginPath();c.roundRect(x-w/2,y-11,w,22,11);c.fill();c.stroke();c.fillStyle=INK;c.fillText(t,x,y+.5)}
+function sq(c,x,y,s,col){c.fillStyle=col;c.strokeStyle=INK;c.lineWidth=2.5;c.beginPath();c.roundRect(x-s,y-s,s*2,s*2,4);c.fill();c.stroke()}
+function toggle(id,fn){var b=$(id);b.onclick=function(){var v=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',v);fn(v,b)}}
+function lg(id,t,bad){var a=LG[id]=LG[id]||[];a.unshift('<li'+(bad?' class="bad"':'')+'>'+t+'</li>');if(a.length>4)a.length=4;$(id).innerHTML=a.join('')}
+function r0(W,H){return Math.max(20,Math.min(W,H)*.075)}
+
+/* 1 man in the middle */
+var mev=false,mtls=false,mt=null,MSG=['user: sam   password: password123','card: 4111 1111 1111 1111','message: meet me at 6pm','user: alex   password: hunter2'];
+var MN=[{e:'💻',x:.08,n:'You'},{e:'📶',x:.3,n:'Wi-Fi router'},{e:'😈',x:.6,n:'Evil router'},{e:'🖥️',x:.92,n:'Website'}];
+function garble(n){var s='',k='▓▒░#%&@$*?!x7QzK';while(s.length<n)s+=k[Math.random()*k.length|0];return s}
+toggle('mm-evil',function(v,b){mev=v;b.textContent='Drop evil router: '+(v?'on':'off');mt=null;$('mm-sc').classList.remove('open')});
+toggle('mm-tls',function(v,b){mtls=v;b.textContent='HTTPS: '+(v?'on':'off')});
+$('mm-send').onclick=function(){if(mt)return;$('mm-sc').classList.remove('open');mt={p:mev?[0,1,2,3]:[0,1,3],i:0,u:0,msg:rnd(MSG),seen:0}};
+mk('mv',function(c,W,H,dt){var P=function(i){return[MN[i].x*W,H/2]},r=r0(W,H),p=mev?[0,1,2,3]:[0,1,3];
+for(var i=0;i<p.length-1;i++)line(c,P(p[i]),P(p[i+1]));
+if(!mev){var g=P(2);c.globalAlpha=.35;node(c,g[0],g[1],r,'😈');c.globalAlpha=1;txt(c,'evil router goes here',g[0],g[1]+r+14,'#5C587D',W)}
+MN.forEach(function(n,i){if(i==2&&!mev)return;var q=P(i);node(c,q[0],q[1],r,n.e,i==2?'#FFD6E1':'#fff');txt(c,n.n,q[0],q[1]+r+14,0,W)});
+if(!mt)return;var a=P(mt.p[mt.i]),b=P(mt.p[mt.i+1]);mt.u+=dt/.9;
+if(mt.u>=1){mt.i++;mt.u=0;var nd=mt.p[mt.i];
+if(nd==2&&!mt.seen){mt.seen=1;$('mm-pre').textContent=mtls?garble(mt.msg.length):mt.msg;$('mm-sc').classList.add('open');lg('mm-log',mtls?'The evil router grabbed the packet but can only read <b>scrambled gibberish</b>.':'The evil router read your packet in <b>plain text</b>.',!mtls)}
+if(nd==3){lg('mm-log',mtls?'The website unlocked the packet with its own key and read your message.':'The website got your message'+(mev?'':'. Nobody was listening this time.'));mt=null;return}
+a=P(mt.p[mt.i]);b=P(mt.p[mt.i+1])}
+var x=a[0]+(b[0]-a[0])*mt.u,y=a[1];if(mtls)node(c,x,y,13,'🔒','#BFD0FF');else sq(c,x,y,9,SUN);chip(c,mtls?'locked':mt.msg.split('   ')[0].slice(0,24),x,y-26,W)});
+
+/* 2 VPN */
+var vpn=false,vq=null,vv=0,VS=[],VN=[{e:'💻',x:.15,y:.62,n:'You',a:'203.0.113.7'},{e:'🛡️',x:.68,y:.3,n:'VPN server',a:'198.51.100.99'},{e:'📺',x:.88,y:.7,n:'BBC iPlayer'}];
+function vs(t){VS.push(t);$('vp-steps').innerHTML=VS.map(function(x){return'<li>'+x+'</li>'}).join('')}
+function vres(ok,ip,where){vv=ok?1:2;$('vp-res').innerHTML='<b>Request came from:</b> '+ip+'<br><b>That address is in:</b> '+where+'<br>'+(ok?'<span class="ok">Allowed. It thinks you’re in the UK.</span>':'<span class="no">Blocked. Not in the UK.</span>')}
+toggle('vp-on',function(v,b){vpn=v;b.textContent='VPN: '+(v?'on':'off');vq=null;vv=0;$('vp-cap').textContent=v?'The VPN is on. Your request will go through an encrypted tunnel to a server in the UK first.':'The VPN is off. Your request goes straight to iPlayer from your own address.'});
+$('vp-send').onclick=function(){if(vq)return;vv=0;VS=[];$('vp-steps').innerHTML='';$('vp-res').textContent='Waiting for iPlayer…';
+vq=vpn?{k:0,u:0,w:0,L:[
+{a:0,b:1,tun:1,lab:'locked in the tunnel',fn:function(){vs('Your VPN app locks the request and sends it down the tunnel to the VPN server in the UK.')}},
+{a:1,b:2,lab:'from 198.51.100.99',wait:1,fn:function(){vs('The VPN server unlocks it and sends it on from its own UK address, 198.51.100.99.');vres(1,'198.51.100.99 (the VPN server)','the United Kingdom');vs('iPlayer sees a UK address and starts the video.')}},
+{a:2,b:1,tok:'🎬',lab:'video',fn:function(){vs('The video goes back to the VPN server.')}},
+{a:1,b:0,tun:1,tok:'🎬',lab:'video, locked',fn:function(){vs('The VPN server locks it and sends it down the tunnel. Your device unlocks it and plays it.')}}]}
+:{k:0,u:0,w:0,L:[{a:0,b:2,lab:'from 203.0.113.7',fn:function(){vs('Your request goes straight to iPlayer with your real address, 203.0.113.7.');vres(0,'203.0.113.7 (your home)','outside the UK');vs('iPlayer checks the address, sees it isn’t in the UK, and refuses.')}}]}};
+mk('vv',function(c,W,H,dt,ts){var P=function(i){return[VN[i].x*W,VN[i].y*H]},r=r0(W,H)*.9,a=P(0),b=P(1),d=P(2);
+c.fillStyle='#E9E6FF';c.beginPath();c.roundRect(6,6,W*.3,H-12,18);c.fill();c.fillStyle='#DDF7EA';c.beginPath();c.roundRect(W*.5,6,W*.5-6,H-12,18);c.fill();
+txt(c,'Your country',W*.15,22,'#5C587D',W);txt(c,'United Kingdom',W*.75,22,'#5C587D',W);txt(c,'the internet',W*.4,H-16,'#8A86AD',W);
+if(vpn){line(c,a,b,'rgba(61,75,255,.2)',18);c.save();c.setLineDash([10,8]);c.lineDashOffset=-ts/25;c.strokeStyle='#fff';c.lineWidth=2;c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);c.stroke();c.restore();line(c,b,d)}
+else line(c,a,d,'#8A86AD',2.5,[6,6]);
+node(c,a[0],a[1],r,'💻');txt(c,'You',a[0],a[1]+r+14,0,W);txt(c,VN[0].a,a[0],a[1]+r+28,'#5C587D',W,'500 11px "DM Sans",Arial,sans-serif');
+if(vpn){node(c,b[0],b[1],r,'🛡️');txt(c,'VPN server',b[0],b[1]+r+14,0,W);txt(c,VN[1].a,b[0],b[1]+r+28,'#5C587D',W,'500 11px "DM Sans",Arial,sans-serif')}
+else{c.globalAlpha=.3;node(c,b[0],b[1],r,'🛡️');c.globalAlpha=1;txt(c,'VPN server (off)',b[0],b[1]+r+14,'#8A86AD',W)}
+node(c,d[0],d[1],r,'📺');txt(c,'BBC iPlayer',d[0],d[1]+r+14,0,W);
+if(vv)chip(c,vv==1?'▶ Now playing':'🚫 Not available here',d[0],d[1]-r-20,W,vv==1?'#DDF7EA':'#FFD6E1');
+if(!vq)return;var L=vq.L[vq.k];
+if(vq.w>0){vq.w-=dt;if(vq.w<=0){vq.k++;vq.u=0;vq.w=0;if(vq.k>=vq.L.length)vq=null}return}
+var s=P(L.a),e=P(L.b),u=Math.min(1,vq.u+=dt/1.1),x=s[0]+(e[0]-s[0])*u,y=s[1]+(e[1]-s[1])*u;
+if(L.tok)node(c,x,y,13,L.tok,'#fff');else if(L.tun)node(c,x,y,13,'🔒','#BFD0FF');else sq(c,x,y,9,SUN);chip(c,L.lab,x,y-26,W);
+if(u>=1){L.fn();if(L.wait)vq.w=L.wait;else{vq.k++;vq.u=0;if(vq.k>=vq.L.length)vq=null}}});
+
+/* 3 firewall */
+var FT=[{p:'443',n:'HTTPS',good:1,col:GRN},{p:'53',n:'DNS',good:1,col:'#6FCFDD'},{p:'22',n:'SSH',good:0,col:'#FF9F43'},{p:'???',n:'Flood',good:0,col:PINK}],FR=[1,1,1,1],fg,fb=[];
+function fscore(){$('fw-score').innerHTML='<b>'+(fg.hp>0?'❤️'.repeat(fg.hp):'💀')+'</b><br>Attacks stopped: '+fg.bad+'<br>Customers served: '+fg.ok+'<br>Customers turned away: '+fg.lost+'<br>Breaches: '+fg.hit}
+function freset(){fg={run:0,pk:[],fx:[],sp:0,ok:0,bad:0,hit:0,lost:0,hp:5};$('fw-go').textContent='Start game';fscore();$('fw-info').textContent='Let customers in (HTTPS and DNS). Keep everything else out. Tap a rule below to block that port.'}
+FT.forEach(function(t,i){var b=document.createElement('button'),nm=i<3?'Port '+t.p+' ('+t.n+')':'Everything else';b.className='chip';b.setAttribute('aria-pressed','false');b.textContent=nm;b.onclick=function(){FR[i]=FR[i]?0:1;b.setAttribute('aria-pressed',!FR[i]);b.textContent=nm+(FR[i]?'':' (blocked)')};$('fw-rules').appendChild(b)});
+$('fw-go').onclick=function(){if(fg.hp<=0)freset();fg.run=!fg.run;this.textContent=fg.run?'Pause':'Resume'};
+$('fw-reset').onclick=freset;freset();
+mk('fv',function(c,W,H,dt){var r=r0(W,H)*.9;
+c.fillStyle='#DDF7EA';c.beginPath();c.roundRect(W*.62,8,W*.37,H-16,18);c.fill();txt(c,'🏠 Your network',W*.805,H*.5,INK,W,'700 14px "DM Sans",Arial,sans-serif');txt(c,'🌍 Internet',W*.1,H-14,INK,W);
+c.fillStyle='#FF9F43';c.strokeStyle=INK;c.lineWidth=2.5;c.beginPath();c.roundRect(W*.5-9,8,18,H-16,6);c.fill();c.stroke();node(c,W*.5,H*.5,r,'🛡️','#fff');
+if(fg.run){fg.sp+=dt;if(fg.sp>.8){fg.sp=0;var t=rnd([0,0,0,1,1,2,3,3]);fg.pk.push({t:t,x:.03,y:.14+Math.random()*.72,v:.15+Math.random()*.07,s:'go',a:1})}}
+fg.pk=fg.pk.filter(function(p){if(fg.run){if(p.s=='bounce'){p.x-=p.v*dt*1.4;p.a-=dt*1.2}else p.x+=p.v*dt;
+if(p.s=='go'&&p.x>=.5){var T=FT[p.t];if(FR[p.t]){p.s='in';if(T.good)fg.ok++;else{fg.hit++;fg.hp--}}else{p.s='bounce';fg.fx.push({x:.5,y:p.y,t:0});if(T.good)fg.lost++;else fg.bad++}fscore();if(fg.hp<=0){fg.run=0;$('fw-go').textContent='Try again';$('fw-info').textContent='Hacked! Too many attacks got in. Press Try again.'}}}
+if(p.x>.95||p.a<=0)return false;var x=p.x*W,y=p.y*H;c.globalAlpha=Math.max(0,p.a);c.fillStyle=FT[p.t].col;c.strokeStyle=INK;c.lineWidth=2;c.beginPath();c.roundRect(x-19,y-10,38,20,10);c.fill();c.stroke();txt(c,FT[p.t].p,x,y+.5,INK);c.globalAlpha=1;return true});
+fg.fx=fg.fx.filter(function(f){f.t+=dt;if(f.t>.5)return false;c.globalAlpha=1-f.t*2;c.font='28px serif';c.fillText('⚡',f.x*W-20,f.y*H);c.globalAlpha=1;return true})});
+
+/* 4 botnet */
+var bots=100,bAtt=0,bSh=0,bCmd=0,bP=[],bC=[],bS=[],bT=0,bLast='',BX={h:[.07,.14],c:[.27,.14],r:[.58,.64],s:[.74,.64],w:[.92,.64],u:[.74,.14]};
+function bpos(i){return[.05+(i%8)*.05,.36+Math.floor(i/8)*.1]}
+$('dd-s').oninput=function(){bots=Math.round(Math.pow(10,this.value/20));$('dd-n').textContent=bots.toLocaleString('en-US')};
+$('bn-go').onclick=function(){if(bAtt||bCmd>0){bAtt=0;bCmd=0;this.textContent='Send attack command';$('bn-cap').textContent='The attacker called off the attack.'}else{bCmd=1.8;this.textContent='Stop attack';$('bn-cap').textContent='The attacker sends the order to the command server, which passes it to every bot.'}};
+toggle('bn-sh',function(v,b){bSh=v;b.textContent='Shield: '+(v?'on':'off')});
+mk('dv2',function(c,W,H,dt,ts){var r=r0(W,H)*.8,k,i,pt=function(a){return[a[0]*W,a[1]*H]},inf=Math.min(48,Math.max(1,Math.round(48*Math.log10(Math.max(bots,1))/5)));
+if(bCmd>0){bCmd-=dt;if(bCmd<=0){bAtt=1;$('bn-cap').textContent='The bots are flooding the website. Real customers (green) get stuck behind the flood.'}}
+var req=bAtt?bots*10:0,lr=req/60000,dr=lr>1?1-1/lr:0,aR=req*(1-dr),aS=bSh?aR*.03:aR,lw=(aS+50)/4000,dw=lw>1?1-1/lw:0,R=pt(BX.r),S=pt(BX.s),Wb=pt(BX.w),Hk=pt(BX.h),C2=pt(BX.c),U=pt(BX.u);
+line(c,R,S);line(c,S,Wb);line(c,U,Wb,'#3DDC97',2,[5,5]);line(c,Hk,C2);
+if(bAtt||bCmd>0){for(i=0;i<inf;i++){var bp=pt(bpos(i));line(c,C2,bp,'rgba(255,92,138,.25)',1,[3,4]);if(bAtt)line(c,bp,R,'rgba(255,92,138,.12)',1)}}
+if(bCmd>0){var q=1-bCmd/1.8,m;if(q<.4){m=q/.4;c.fillStyle=PINK;c.beginPath();c.arc(Hk[0]+(C2[0]-Hk[0])*m,Hk[1]+(C2[1]-Hk[1])*m,6,0,6.283);c.fill()}else{m=(q-.4)/.6;for(i=0;i<inf;i++){var b2=pt(bpos(i));c.fillStyle=PINK;c.beginPath();c.arc(C2[0]+(b2[0]-C2[0])*m,C2[1]+(b2[1]-C2[1])*m,3,0,6.283);c.fill()}}}
+var EM=['💻','📷','📺','📱'],br=Math.max(5,Math.min(r*.55,W*.02)),sm=W<560;
+for(i=0;i<48;i++){var p=pt(bpos(i)),on=i<inf;c.globalAlpha=on?1:.45;c.fillStyle=on?(bAtt?PINK:'#FFD6E1'):'#fff';c.strokeStyle=INK;c.lineWidth=2;c.beginPath();c.arc(p[0],p[1],br,0,6.283);c.fill();c.stroke();c.font=(br*1.1)+'px serif';c.fillStyle='#000';c.fillText(EM[i%4],p[0],p[1]+1);c.globalAlpha=1}
+chip(c,bots>inf?'each icon is about '+Math.ceil(bots/inf).toLocaleString('en-US')+' bots':bots+(bots==1?' bot':' bots'),.22*W,H-14,W);
+txt(c,'Infected devices (the botnet)',.22*W,.3*H,'#5C587D',W);
+var lrc=lr<.6?GRN:lr<1?SUN:lr<2?PINK:'#8B1E3F',lwc=lw<.6?GRN:lw<1?SUN:lw<2?PINK:'#8B1E3F';
+node(c,Hk[0],Hk[1],r,'🧑‍💻');txt(c,'Attacker',Hk[0],Hk[1]+r+14,0,W);node(c,C2[0],C2[1],r,'🗄️');txt(c,sm?'Commands':'Command server',C2[0],C2[1]+r+14,0,W);
+node(c,U[0],U[1],r,'🙂','#DDF7EA');txt(c,sm?'Customer':'Real customer',U[0],U[1]+r+14,0,W);
+node(c,R[0],R[1],r,'📡',lrc);txt(c,'Router',R[0],R[1]+r+14,0,W);
+c.globalAlpha=bSh?1:.3;node(c,S[0],S[1],r,'🛡️',bSh?'#BFD0FF':'#fff');c.globalAlpha=1;txt(c,bSh||sm?'Shield':'Shield (off)',S[0],S[1]+r+14,bSh?INK:'#8A86AD',W);
+node(c,Wb[0],Wb[1],r,'🖥️',lwc);txt(c,'Website',Wb[0],Wb[1]+r+14,0,W);
+[[lr,R],[lw,Wb]].forEach(function(z){if(z[0]>=2){if(Math.random()<dt*14)bS.push({x:z[1][0]+(Math.random()-.5)*r,y:z[1][1]-r,t:0});c.font=r+'px serif';c.fillText('🔥',z[1][0],z[1][1]-r*1.35)}});
+bS=bS.filter(function(s){s.t+=dt;if(s.t>1.2)return false;c.globalAlpha=.5*(1-s.t/1.2);c.fillStyle='#555';c.beginPath();c.arc(s.x,s.y-s.t*50,6+s.t*10,0,6.283);c.fill();c.globalAlpha=1;return true});
+var spd=.9/(1+(lr>.6?(lr-.6)*2.5:0)),tgt=bAtt?Math.round(8+190*Math.log10(Math.max(bots,1))/5):0;
+for(k=0;k<4&&bP.length<tgt;k++){var lst=bSh?['r','s','w']:['r','w'],ft=null;if(Math.random()<dr)ft='r';else if(bSh&&Math.random()<.97)ft='s';else if(Math.random()<dw)ft='w';bP.push({b:Math.floor(Math.random()*inf),t:0,l:lst,f:ft,fade:0,j:(Math.random()-.5)*10})}
+if(bP.length>tgt)bP.length=tgt;
+function at(a,b,f){return[(a[0]+(b[0]-a[0])*f)*W,(a[1]+(b[1]-a[1])*f)*H]}
+bP=bP.filter(function(p){if(p.fade>0){p.fade-=dt*2;if(p.fade<=0)return false}else{p.t+=spd*dt;if(p.f&&p.t>=p.l.indexOf(p.f)+.92)p.fade=1}
+if(p.t>=p.l.length)return false;var i0=Math.floor(p.t),A=i0?BX[p.l[i0-1]]:bpos(p.b),B=BX[p.l[i0]],q=at(A,B,p.t-i0);c.globalAlpha=p.fade>0?p.fade:1;c.fillStyle=SUN;c.beginPath();c.arc(q[0],q[1]+p.j,3,0,6.283);c.fill();c.globalAlpha=1;return true});
+bT+=dt;if(bT>.7){bT=0;bC.push({t:0,f:Math.random()<dw,fade:0})}
+bC=bC.filter(function(p){if(p.fade>0){p.fade-=dt*2;if(p.fade<=0)return false}else{p.t+=dt*.5;if(p.f&&p.t>=.72)p.fade=1}
+if(p.t>=1)return false;var q=at(BX.u,BX.w,p.t);c.globalAlpha=p.fade>0?p.fade:1;c.fillStyle=GRN;c.strokeStyle=INK;c.lineWidth=1.5;c.beginPath();c.arc(q[0],q[1],5,0,6.283);c.fill();c.stroke();c.globalAlpha=1;return true});
+var lat=lw<1?Math.round(30/(1-.9*lw)):Math.min(9999,Math.round(300+(lw-1)*800)),st=lw<.6?(req&&bSh?'Healthy. The shield is soaking up the attack.':'Healthy'):lw<1?'Struggling':lw<2?'Overloaded':'Down',
+o='<b>Bots:</b> '+bots.toLocaleString('en-US')+'<br><b>Attack traffic:</b> '+req.toLocaleString('en-US')+' requests a second<br><b>Reaching the website:</b> '+Math.round(aS).toLocaleString('en-US')+' a second<br><b>Real customer’s page load:</b> '+(dw>.5?'timing out':lat.toLocaleString('en-US')+' ms')+'<br><b>Website:</b> '+st;
+if(o!==bLast){bLast=o;$('dd-out').innerHTML=o}});
+
+/* 5 IPv4 vs IPv6 */
+var i6=0,it=0,isel=-1,ID=[],EM=['📱','💻','🎮','📺','⌚','📷'];
+for(var q=0;q<18;q++){var an=q/18*6.283;ID.push({e:EM[q%6],a:an,rr:.1+(q%3)*.04,fx:.07+(q%6)*.105+((q*.618)%1)*.04,fy:.14+Math.floor(q/6)*.3+((q*.755)%1)*.08})}
+function iinfo(){$('iv-info').textContent=i6?'Same 18 devices, but each has its own public address. No sharing and no translation.':'18 devices behind one public address. NAT keeps a table to sort out whose traffic is whose.';
+$('iv-res').innerHTML=i6?'<b>IPv6:</b> about 340 undecillion addresses. That’s roughly 79 octillion times as many as IPv4.':'<b>IPv4:</b> about 4.3 billion addresses. Not enough for every device, so homes share one.'}
+['iv-4','iv-6'].forEach(function(id,k){$(id).onclick=function(){i6=k;$('iv-4').setAttribute('aria-pressed',!k);$('iv-6').setAttribute('aria-pressed',!!k);isel=-1;iinfo();$('iv-dev').textContent='Tap any device on the map to see its address.'}});iinfo();
+function ipos(k,W,H,e){var d=ID[k],R=Math.min(W,H)*d.rr,x4=.2*W+Math.cos(d.a)*R,y4=.5*H+Math.sin(d.a)*R;return[x4+(d.fx*W-x4)*e,y4+(d.fy*H-y4)*e]}
+function a6(k){return'2001:db8:1::'+(160+k).toString(16)}
+mk('iv',function(c,W,H,dt){it+=(i6-it)*Math.min(1,dt*3);var e=it*it*(3-2*it),net=[.9*W,H/2],nat=[.42*W,H/2],k,p;
+c.globalAlpha=1-e;if(e<.98){line(c,nat,net,INK,7)}c.globalAlpha=1;
+for(k=0;k<18;k++){p=ipos(k,W,H,e);c.globalAlpha=1-e;line(c,p,nat,'rgba(27,23,64,.35)',1.5);c.globalAlpha=e;line(c,p,net,'rgba(61,75,255,.35)',1.5);c.globalAlpha=1}
+if(e<.98){c.globalAlpha=1-e;c.fillStyle=BLUE;c.strokeStyle=INK;c.lineWidth=2.5;c.beginPath();c.roundRect(nat[0]-24,nat[1]-18,48,36,10);c.fill();c.stroke();txt(c,'NAT',nat[0],nat[1]+1,'#fff');chip(c,'1 public address: 203.0.113.7',(.42+.9)/2*W,H/2-26,W);c.globalAlpha=1}
+node(c,net[0],net[1],r0(W,H)*.9,'🌐');txt(c,'Internet',net[0],net[1]+r0(W,H)*.9+14,0,W);
+for(k=0;k<18;k++){p=ipos(k,W,H,e);node(c,p[0],p[1],11,ID[k].e);if(k==isel){c.strokeStyle=PINK;c.lineWidth=3;c.beginPath();c.arc(p[0],p[1],17,0,6.283);c.stroke()}if(e>.8&&(k<3||k==isel))chip(c,a6(k),p[0],p[1]+26,W)}},
+function(x,y){var W=this,best=-1,bd=20;var cv=$('iv'),w=cv.clientWidth,h=cv.clientHeight;for(var k=0;k<18;k++){var p=ipos(k,w,h,it*it*(3-2*it)),d=Math.hypot(p[0]-x,p[1]-y);if(d<bd){bd=d;best=k}}if(best>=0){isel=best;$('iv-dev').innerHTML=i6?'<b>'+a6(best)+'</b><br>Its own public address. Reachable directly (your firewall still decides who gets in).':'<b>192.168.1.'+(10+best)+'</b> (private)<br>Outside, it shares 203.0.113.7 with all the others. Port numbers keep the conversations apart.'}});
+
+/* 6 Wi-Fi collisions */
+var WD=[{e:'📱',x:.14,n:'Phone',col:'#FF9F43'},{e:'💻',x:.86,n:'Laptop',col:'#6FCFDD'}],ws,wc,wb,wend;
+function wreset(){ws=[{st:'idle',u:0,t:0,s:0,win:0},{st:'idle',u:0,t:0,s:0,win:0}];wc=0;wb=0;wend=0;LG['wf-log']=[];$('wf-log').innerHTML='<li class="empty">Press a button to start.</li>'}
+wreset();
+$('wf-both').onclick=function(){wreset();ws[0].st=ws[1].st='fly';lg('wf-log','Phone and laptop both start sending at the <b>exact same moment</b>.')};
+$('wf-one').onclick=function(){wreset();rnd(ws).st='fly';lg('wf-log','Only one device sends. The air is free, so it goes straight through.')};
+$('wf-reset').onclick=wreset;
+mk('wv',function(c,W,H,dt){var cx=W/2,cy=H/2,r=r0(W,H),i;
+if(wb>0){wb-=dt;if(wb<=0){var win=Math.min(16,Math.pow(2,wc));ws.forEach(function(d){d.st='wait';d.win=win;d.s=Math.floor(Math.random()*win);d.t=d.s*.5});lg('wf-log','Each picks a random wait from 0 to '+(win-1)+' slots. Phone: <b>'+ws[0].s+'</b>. Laptop: <b>'+ws[1].s+'</b>.')}}
+else{ws.forEach(function(d){if(d.st=='fly')d.u+=dt/1.3;if(d.st=='wait')d.t-=dt});
+if(ws[0].st=='fly'&&ws[1].st=='fly'&&ws[0].u>=.98&&ws[1].u>=.98){wc++;wb=1;ws.forEach(function(d){d.st='boom'});lg('wf-log','<b>Collision #'+wc+'!</b> Both packets smashed together. Neither arrived.',1)}
+ws.forEach(function(d,i){if(d.st=='fly'&&d.u>=1){d.st='done';wend++;lg('wf-log','<b>'+WD[i].n+' got through.</b>');if(wend==2&&wc)lg('wf-log','Both messages arrived after <b>'+wc+' collision'+(wc>1?'s':'')+'</b>.')}});
+var busy=ws.some(function(d){return d.st=='fly'}),rd=ws.filter(function(d){return(d.st=='wait'&&d.t<=0)||(d.st=='sense'&&!busy)});
+if(!busy)rd.forEach(function(d){d.st='fly';d.u=0});else ws.forEach(function(d){if(d.st=='wait'&&d.t<=0)d.st='sense'})}
+line(c,[WD[0].x*W,cy],[cx,cy],INK,2,[6,6]);line(c,[cx,cy],[WD[1].x*W,cy],INK,2,[6,6]);
+node(c,cx,cy,r+4,'📶');txt(c,'Wi-Fi router',cx,cy+r+18,0,W);
+ws.forEach(function(d,i){var x=WD[i].x*W;node(c,x,cy,r,WD[i].e);txt(c,WD[i].n,x,cy+r+14,0,W);
+if(d.st=='fly'){var px=x+(cx-x)*d.u;sq(c,px,cy,9,WD[i].col)}
+if(d.st=='wait'){var sw=Math.min(16,d.win)*15,bx=Math.max(sw/2+4,Math.min(W-sw/2-4,x))-sw/2,by=cy-r-30;for(var s=0;s<d.win;s++){c.fillStyle=s==d.s?SUN:'#fff';c.strokeStyle=INK;c.lineWidth=2;c.fillRect(bx+s*15,by,13,13);c.strokeRect(bx+s*15,by,13,13)}txt(c,'waits '+d.s+' slot'+(d.s==1?'':'s'),x,by-12,0,W)}
+if(d.st=='sense')chip(c,'channel busy, listening…',x,cy-r-26,W);if(d.st=='done')chip(c,'sent ✓',x,cy-r-26,W,'#DDF7EA')});
+if(wb>0){c.font=(40+(1-wb)*50)+'px serif';c.fillText('💥',cx,cy)}});
+})();
+</script>
 </body>
 </html>
