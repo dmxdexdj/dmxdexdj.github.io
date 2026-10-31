@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Packet Park: a little playground for networking</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1EEFF;--ink:#1B1740;--blue:#3D4BFF;--pink:#FF5C8A;--sun:#FFD23F;--white:#fff;--muted:#5C587D;
+--display:'Unbounded','Arial Black',Arial,sans-serif;--body:'DM Sans','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+header{padding:28px 0}
+.logo{font-family:var(--display);font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:10px}
+.logo i{width:22px;height:22px;background:var(--sun);border:2.5px solid var(--ink);border-radius:6px;display:inline-block;transform:rotate(-8deg)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,5.4vw,64px);line-height:1.08;letter-spacing:-.04em;max-width:17ch}
+.lead{margin-top:20px;font-size:19px;color:var(--muted);max-width:54ch}
+.stage{margin-top:40px;background:var(--white);border:2.5px solid var(--ink);border-radius:28px;box-shadow:7px 7px 0 var(--ink);overflow:hidden}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:end;padding:18px 20px;border-bottom:2.5px solid var(--ink);background:#FBFAFF}
+label{display:grid;gap:4px;font-size:13px;font-weight:700}
+select,button{font:inherit;font-weight:700;font-size:15px;color:var(--ink);height:44px;border-radius:12px;border:2.5px solid var(--ink);background:#fff;padding:0 14px}
+button{cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+button:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+button.go{background:var(--blue);color:#fff}
+button.alt{background:var(--sun)}
+.arrow{font-weight:700;padding-bottom:10px}
+canvas{display:block;width:100%;aspect-ratio:16/8.5;cursor:default}
+.under{display:grid;grid-template-columns:1.3fr 1fr;border-top:2.5px solid var(--ink)}
+.under>div{padding:20px}
+.under>div+div{border-left:2.5px solid var(--ink);background:#FBFAFF}
+.under h2{font-family:var(--display);font-size:14px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:38px;font-size:14px;padding:0 14px;border-radius:999px;box-shadow:2px 2px 0 var(--ink)}
+.chip[aria-pressed="true"]{background:var(--pink);color:#fff;text-decoration:line-through}
+.note{font-size:14px;color:var(--muted);margin-top:12px}
+ol{list-style:none;display:grid;gap:8px;font-size:14.5px;min-height:96px}
+ol li{padding-left:14px;border-left:4px solid var(--blue)}
+ol li.bad{border-color:var(--pink)}
+ol li.empty{border-color:#D8D4F0;color:var(--muted)}
+section{padding:96px 0 40px}
+h3.big{font-family:var(--display);font-size:clamp(24px,3.4vw,40px);letter-spacing:-.04em;line-height:1.1;font-weight:700;max-width:18ch}
+dl{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+dl div{padding:26px 0;border-top:2.5px solid var(--ink)}
+dt{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.03em}
+dd{color:var(--muted);margin-top:6px;max-width:44ch}
+.fact{margin:56px 0 0;background:var(--sun);border:2.5px solid var(--ink);border-radius:22px;padding:28px 32px;font-family:var(--display);font-weight:500;font-size:clamp(17px,2vw,22px);line-height:1.35;letter-spacing:-.02em;transform:rotate(-1deg)}
+footer{padding:64px 0 48px;color:var(--muted);font-size:14px}
+@media (max-width:760px){
+canvas{aspect-ratio:4/3.6}
+.under{grid-template-columns:1fr}.under>div+div{border-left:0;border-top:2.5px solid var(--ink)}
+dl{grid-template-columns:1fr}
+.arrow{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+button.tog[aria-pressed="true"]{background:var(--blue);color:#fff}
+button.pf[aria-pressed="true"]{background:var(--sun)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.tab{list-style:none;display:grid;gap:6px;font-size:13.5px;min-height:0;font-variant-numeric:tabular-nums}
+.tab li{background:#F1EEFF;border:1.5px solid var(--ink);border-radius:8px;padding:6px 10px;border-left:1.5px solid var(--ink)}
+.tab li.rule{background:var(--sun)}
+.tab li.empty{border-style:dashed;color:var(--muted);background:transparent}
+.under h2.sp{margin-top:18px}
+.intro{margin-top:20px;font-size:18px;color:var(--muted);max-width:60ch}
+.intro+.intro{margin-top:14px}
+.ways{margin-top:48px;border:2.5px solid var(--ink);border-radius:22px;padding:26px 30px;background:#fff;box-shadow:5px 5px 0 var(--ink);max-width:70ch}
+.ways h4{font-family:var(--display);font-size:17px;letter-spacing:-.02em;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><span class="logo"><i></i>packet park</span></header>
+<main>
+<h1>Send a packet across the internet.</h1>
+<p class="lead">Pick two devices and watch your data hop through routers to get there. Then switch some routers off and see how it finds another way.</p>
+
+<div class="stage">
+<div class="bar">
+<label>From<select id="from"></select></label>
+<span class="arrow" aria-hidden="true">→</span>
+<label>To<select id="to"></select></label>
+<button class="go" id="send">Send packet</button>
+<button class="alt" id="rand">Surprise me</button>
+</div>
+<canvas id="cv" aria-label="Network map with devices and routers. Packets travel between them."></canvas>
+<div class="under">
+<div>
+<h2>Routers (tap to switch off)</h2>
+<div class="chips" id="chips"></div>
+<p class="note" id="status" aria-live="polite">Everything is on. You can also click a router on the map.</p>
+</div>
+<div>
+<h2>What just happened</h2>
+<ol id="log"><li class="empty">Send a packet to see its route.</li></ol>
+</div>
+</div>
+</div>
+
+<section>
+<h3 class="big">A tiny glossary</h3>
+<dl>
+<div><dt>Packet</dt><dd>A small chunk of data. Big things like photos are split into lots of packets, sent separately and put back together at the end.</dd></div>
+<div><dt>IP address</dt><dd>A number that says where a device is, like 192.168.1.20 on a home network. Every device online has one.</dd></div>
+<div><dt>DNS</dt><dd>The internet’s phone book. It turns a name like example.com into an IP address your device can use.</dd></div>
+<div><dt>Router</dt><dd>A box that reads where a packet is going and passes it on to the next router along the way.</dd></div>
+<div><dt>NAT</dt><dd>A router trick that lets many devices share one public address. The router keeps a table of who asked for what.</dd></div>
+<div><dt>CGNAT</dt><dd>NAT done by your ISP across lots of homes at once. Cheaper for them, but you lose the ability to accept incoming connections.</dd></div>
+<div><dt>Hop</dt><dd>One jump from one router to the next. The more hops, the longer the trip usually takes.</dd></div>
+<div><dt>Latency</dt><dd>How long data takes to arrive, measured in milliseconds (ms). Lower is better, especially for games.</dd></div>
+</dl>
+<p class="fact">Packets from the same file can take different routes and arrive out of order. Your device puts them back together.</p>
+</section>
+<section id="nat">
+<h3 class="big" style="max-width:22ch">Why your devices have fake addresses</h3>
+<p class="intro">There are only about 4.3 billion IPv4 addresses, and far more devices than that. So your home shares one public address, and every device inside gets a private one like 192.168.1.10. Your router does the swapping. That trick is called NAT, short for network address translation.</p>
+<p class="intro">Some ISPs have run out of addresses too. They put another NAT, called CGNAT (carrier-grade NAT), in front of whole neighbourhoods. Now your router doesn’t even get a public address. It gets a shared one starting with 100.64, and many homes use the same public address at once. Try both below.</p>
+
+<div class="stage">
+<div class="bar">
+<label>Connection<span style="display:flex;gap:8px"><button class="tog" id="m-nat" aria-pressed="true">Home NAT</button><button class="tog" id="m-cg" aria-pressed="false">With CGNAT</button></span></label>
+<label>Send from<select id="n-dev"><option value="0">💻 Laptop</option><option value="1">📱 Phone</option></select></label>
+<button class="go" id="n-out">Send request out</button>
+<button class="alt" id="n-in">Friend connects in</button>
+<button class="pf" id="n-pf" aria-pressed="false">Port forward: off</button>
+</div>
+<canvas id="nv" aria-label="Diagram of devices, your router, your ISP and the internet. Tokens show addresses being swapped as packets travel."></canvas>
+<div class="under">
+<div>
+<h2>Your router’s table</h2>
+<ul class="tab" id="n-tr"></ul>
+<div id="n-tcw"><h2 class="sp">ISP’s CGNAT table</h2><ul class="tab" id="n-tc"></ul></div>
+<p class="note">The addresses here are made-up examples. Real ones differ.</p>
+</div>
+<div>
+<h2>What just happened</h2>
+<ol id="n-log"></ol>
+</div>
+</div>
+</div>
+
+<h3 class="big" style="margin-top:96px;max-width:22ch">Why CGNAT is such a pain</h3>
+<dl>
+<div><dt>You can’t host anything</dt><dd>Game servers, cameras and remote desktop all need someone outside to reach in. Behind CGNAT there’s no way in, because the ISP’s box drops anything nobody asked for.</dd></div>
+<div><dt>Port forwarding stops working</dt><dd>You can set the rule on your router perfectly and it still won’t help. The packet is dropped one step earlier, at a box you don’t control.</dd></div>
+<div><dt>Peer-to-peer gets slower</dt><dd>Voice calls and games often can’t connect directly, so they send everything through a relay server instead. That adds lag.</dd></div>
+<div><dt>Strangers share your address</dt><dd>Many homes can look like one IP address, so a ban or block aimed at one person can hit everyone using it.</dd></div>
+<div><dt>Consoles complain</dt><dd>Stack another NAT on top of yours and consoles report a strict NAT type, which limits who you can play with.</dd></div>
+<div><dt>Problems are hard to trace</dt><dd>Tools and logs show the shared address, not you, so working out what went wrong often needs your ISP’s help.</dd></div>
+</dl>
+<div class="ways"><h4>Ways around it</h4><p>Ask your ISP for a public IPv4 address (some charge a small fee). Use IPv6, which has so many addresses that NAT isn’t needed. Or rent a small server somewhere and tunnel your traffic through it.</p></div>
+</section>
+</main>
+<footer>Packet Park is a toy. Real networks have millions of routers, and the times here are made up.</footer>
+</div>
+
+<script>
+(function(){
+var cv=document.getElementById('cv'),ctx=cv.getContext('2d'),W,H,dpr=Math.min(devicePixelRatio||1,2);
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $=function(i){return document.getElementById(i)};
+var N=[
+{n:'Laptop',e:'💻',x:.08,y:.25,end:1},{n:'Phone',e:'📱',x:.08,y:.75,end:1},
+{n:'Home router',s:'H',x:.25,y:.5},{n:'Router A',s:'A',x:.42,y:.2},{n:'Router B',s:'B',x:.42,y:.8},
+{n:'Router C',s:'C',x:.58,y:.5},{n:'Router D',s:'D',x:.74,y:.22},{n:'Router E',s:'E',x:.74,y:.78},
+{n:'Cat videos',e:'🐱',x:.92,y:.2,end:1},{n:'Game server',e:'🎮',x:.92,y:.8,end:1}];
+var E=[[0,2,4],[1,2,5],[2,3,12],[2,4,9],[3,5,8],[4,5,15],[3,6,21],[4,7,11],[5,6,7],[5,7,10],[6,7,6],[6,8,5],[7,9,4]];
+var down={},packets=[],ripples=[],hl=null,logItems=[];
+var ends=[];N.forEach(function(n,i){if(n.end)ends.push(i)});
+ends.forEach(function(i){['from','to'].forEach(function(id){var o=document.createElement('option');o.value=i;o.textContent=N[i].e+' '+N[i].n;$(id).appendChild(o)})});
+$('from').value=0;$('to').value=8;
+function w(a,b){for(var k=0;k<E.length;k++){var e=E[k];if((e[0]==a&&e[1]==b)||(e[0]==b&&e[1]==a))return e[2]}return 0}
+function route(a,b){var d={},prev={},done={};N.forEach(function(_,i){d[i]=1e9});d[a]=0;
+for(var c=0;c<N.length;c++){var u=-1;for(var i=0;i<N.length;i++)if(!done[i]&&!down[i]&&(u<0||d[i]<d[u]))u=i;if(u<0||d[u]>=1e9)break;done[u]=1;
+E.forEach(function(e){var v=e[0]==u?e[1]:e[1]==u?e[0]:-1;if(v>=0&&!down[v]&&d[u]+e[2]<d[v]){d[v]=d[u]+e[2];prev[v]=u}})}
+if(d[b]>=1e9)return null;var p=[b];while(p[0]!==a)p.unshift(prev[p[0]]);return{path:p,ms:d[b]}}
+function log(t,bad){logItems.unshift({t:t,bad:bad});logItems=logItems.slice(0,5);$('log').innerHTML=logItems.map(function(l){return'<li'+(l.bad?' class="bad"':'')+'>'+l.t+'</li>'}).join('')}
+function send(a,b){if(a==b){log('Pick two different devices.',1);return}
+var r=route(a,b);
+if(!r){log('<b>No route</b> from '+N[a].n+' to '+N[b].n+'. Too many routers are off. Switch one back on.',1);ripples.push({n:a,t:0,bad:1});return}
+var names=r.path.map(function(i){return N[i].n}).join(' → ');
+if(reduce){hl={path:r.path,t:1};log('<b>Delivered</b> in '+r.ms+' ms, '+(r.path.length-1)+' hops.<br>'+names);return}
+packets.push({path:r.path,i:0,u:0,ms:r.ms,names:names,a:a,b:b,shown:1})}
+function deliver(p){hl={path:p.path,t:1};ripples.push({n:p.b,t:0});if(p.shown)log('<b>Delivered</b> in '+p.ms+' ms, '+(p.path.length-1)+' hops.<br>'+p.names)}
+function setDown(i,v){down[i]=v;var n=Object.keys(down).filter(function(k){return down[k]}).length;
+document.querySelectorAll('.chip').forEach(function(c){var k=+c.dataset.i;c.setAttribute('aria-pressed',!!down[k]);c.textContent=N[k].s+(down[k]?' (off)':'')});
+$('status').textContent=n?n+' router'+(n>1?'s':'')+' off. Send another packet to see the detour.':'Everything is on. You can also click a router on the map.'}
+N.forEach(function(nd,i){if(!nd.end){var b=document.createElement('button');b.className='chip';b.dataset.i=i;b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',nd.n);b.textContent=nd.s;b.onclick=function(){setDown(i,!down[i])};$('chips').appendChild(b)}});
+$('send').onclick=function(){send(+$('from').value,+$('to').value)};
+$('rand').onclick=function(){var a=ends[Math.random()*ends.length|0],b;do{b=ends[Math.random()*ends.length|0]}while(b==a);$('from').value=a;$('to').value=b;send(a,b)};
+function resize(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+function P(i){return[N[i].x*W,N[i].y*H]}
+function R(){return Math.max(20,Math.min(W,H)*.06)}
+cv.addEventListener('click',function(e){var r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+N.forEach(function(n,i){if(!n.end){var p=P(i);if(Math.hypot(p[0]-x,p[1]-y)<R()+6)setDown(i,!down[i])}})});
+cv.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=0;
+N.forEach(function(n,i){if(!n.end){var p=P(i);if(Math.hypot(p[0]-x,p[1]-y)<R()+6)h=1}});cv.style.cursor=h?'pointer':'default'});
+function rr(x,y,w_,h_,r){ctx.beginPath();ctx.roundRect(x,y,w_,h_,r)}
+var last=0,auto=0;
+function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;ctx.clearRect(0,0,W,H);var r0=R();
+E.forEach(function(e){var a=P(e[0]),b=P(e[1]),off=down[e[0]]||down[e[1]];ctx.strokeStyle=off?'#CFCBE8':'#1B1740';ctx.lineWidth=2.5;ctx.setLineDash(off?[6,6]:[]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();ctx.setLineDash([])});
+if(hl){hl.t=Math.max(0,hl.t-dt/4);ctx.strokeStyle='rgba(61,75,255,'+hl.t+')';ctx.lineWidth=7;ctx.lineJoin='round';ctx.beginPath();hl.path.forEach(function(i,k){var p=P(i);k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1])});ctx.stroke()}
+ctx.font='700 11.5px "DM Sans",Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+E.forEach(function(e){var a=P(e[0]),b=P(e[1]),mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,t=e[2]+' ms',tw=ctx.measureText(t).width+12;ctx.fillStyle='#fff';ctx.strokeStyle='#1B1740';ctx.lineWidth=1.5;rr(mx-tw/2,my-9,tw,18,9);ctx.fill();ctx.stroke();ctx.fillStyle='#1B1740';ctx.fillText(t,mx,my+.5)});
+N.forEach(function(n,i){var p=P(i),o=down[i];ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';
+if(n.end){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p[0],p[1],r0,0,6.283);ctx.fill();ctx.stroke();ctx.font=(r0*1.0)+'px serif';ctx.fillStyle='#000';ctx.fillText(n.e,p[0],p[1]+2)}
+else{ctx.fillStyle=o?'#FF5C8A':'#3D4BFF';rr(p[0]-r0*.85,p[1]-r0*.85,r0*1.7,r0*1.7,r0*.4);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.font='700 '+(r0*.75)+'px Unbounded,Arial,sans-serif';ctx.fillText(o?'×':n.s,p[0],p[1]+1)}
+ctx.font='700 12px "DM Sans",Arial,sans-serif';ctx.fillStyle='#1B1740';ctx.fillText(n.n,p[0],p[1]+r0+14)});
+ripples=ripples.filter(function(r){r.t+=dt;var p=P(r.n),k=r.t/.8;if(k>=1)return false;ctx.strokeStyle=(r.bad?'rgba(255,92,138,':'rgba(255,210,63,')+(1-k)+')';ctx.lineWidth=4;ctx.beginPath();ctx.arc(p[0],p[1],r0+k*30,0,6.283);ctx.stroke();return true});
+packets=packets.filter(function(p){var a=P(p.path[p.i]),b=P(p.path[p.i+1]),dur=.3+w(p.path[p.i],p.path[p.i+1])*.035;p.u+=dt/dur;
+if(p.u>=1){p.i++;p.u=0;if(p.i>=p.path.length-1){deliver(p);return false}a=P(p.path[p.i]);b=P(p.path[p.i+1])}
+var x=a[0]+(b[0]-a[0])*p.u,y=a[1]+(b[1]-a[1])*p.u;ctx.fillStyle='#FFD23F';ctx.strokeStyle='#1B1740';ctx.lineWidth=2.5;rr(x-8,y-8,16,16,4);ctx.fill();ctx.stroke();return true});
+if(!reduce){auto+=dt;if(auto>3.2&&packets.length<2){auto=0;var a=ends[Math.random()*ends.length|0],b;do{b=ends[Math.random()*ends.length|0]}while(b==a);var r=route(a,b);if(r)packets.push({path:r.path,i:0,u:0,ms:r.ms,a:a,b:b,names:'',shown:0})}}
+requestAnimationFrame(draw)}
+addEventListener('resize',resize);resize();requestAnimationFrame(draw);
+})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},cv=$('nv'),ctx=cv.getContext('2d'),W,H,dpr=Math.min(devicePixelRatio||1,2);
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var mode='nat',pf=false,tok=null,ripples=[],logs=[],tabR=[],tabC=[];
+var DIP=['192.168.1.10','192.168.1.11'];
+var ND=[{n:'Laptop',e:'💻',x:.07,y:.27},{n:'Phone',e:'📱',x:.07,y:.73},{n:'Your router',s:'NAT',x:.33,y:.5},{n:'ISP',s:'ISP',x:.62,y:.5},{n:'Internet',e:'🌐',x:.92,y:.5},{n:'Neighbour',e:'🏠',x:.62,y:.14},{n:'Neighbour',e:'🏠',x:.62,y:.86}];
+var ED=[[0,2],[1,2],[2,3],[3,4],[3,5],[3,6]];
+function vis(i){return i<5||mode==='cg'}
+function addr(i){if(i<2)return DIP[i];if(i==2)return mode==='cg'?'100.64.8.21':'203.0.113.7';if(i==3)return mode==='cg'?'198.51.100.20':'';if(i==5)return'100.64.3.9';if(i==6)return'100.64.5.2';return''}
+function log(t,bad){logs.unshift({t:t,bad:bad});logs=logs.slice(0,4);$('n-log').innerHTML=logs.map(function(l){return'<li'+(l.bad?' class="bad"':'')+'>'+l.t+'</li>'}).join('')}
+function render(){var r=(pf?'<li class="rule">Rule: outside :25565 → 192.168.1.10:25565</li>':'')+tabR.slice(0,3).map(function(x){return'<li>'+x+'</li>'}).join('');
+$('n-tr').innerHTML=r||'<li class="empty">Empty until a device sends something.</li>';
+$('n-tc').innerHTML=tabC.slice(0,3).map(function(x){return'<li>'+x+'</li>'}).join('')||'<li class="empty">Empty until a device sends something.</li>';
+$('n-tcw').style.display=mode==='cg'?'block':'none'}
+function busy(v){['n-out','n-in'].forEach(function(i){$(i).disabled=v})}
+function end(drop){if(tok&&!drop)ripples.push({n:tok.cur,t:0});tok=null;busy(false)}
+function run(start,q){tok={cur:start,to:null,u:0,wait:0,label:'',q:q};busy(true);if(reduce)advance(0)}
+function advance(dt){var g=0;while(tok&&g++<80){var t=tok;
+if(t.wait>0){t.wait-=dt;if(t.wait>0)return;continue}
+if(t.to!=null){t.u+=dt/.75;if(t.u>=1){t.cur=t.to;t.to=null;t.u=0;dt=0;continue}return}
+var s=t.q.shift();if(!s){end();return}
+if(s.label!=null)t.label=s.label;
+else if(s.fn)s.fn();
+else if(s.wait!=null){t.wait=reduce?0:s.wait}
+else if(s.go!=null){if(reduce)t.cur=s.go;else{t.to=s.go;t.u=0}}
+else if(s.drop){ripples.push({n:t.cur,t:0,bad:1});log(s.drop,1);end(true);return}}}
+function outbound(){var d=+$('n-dev').value,ip=DIP[d],sp=49152+(Math.random()*9000|0),rp=40000+(Math.random()*9000|0),cp=60000+(Math.random()*4000|0),cg=mode==='cg',pub=cg?'100.64.8.21':'203.0.113.7';
+var q=[{label:'src '+ip+':'+sp},{go:2},{fn:function(){tabR.unshift(ip+':'+sp+' ↔ '+pub+':'+rp);render()}},{label:'src '+pub+':'+rp},{go:3}];
+if(cg)q.push({fn:function(){tabC.unshift(pub+':'+rp+' ↔ 198.51.100.20:'+cp);render()}},{label:'src 198.51.100.20:'+cp});
+q.push({go:4},{wait:.5},{label:'dst '+(cg?'198.51.100.20:'+cp:pub+':'+rp)},{go:3});
+if(cg)q.push({label:'dst '+pub+':'+rp});
+q.push({go:2},{label:'dst '+ip+':'+sp},{go:d},{fn:function(){log(cg?'<b>Reply delivered.</b> Two swaps each way: first your router, then the ISP’s CGNAT box.':'<b>Reply delivered.</b> Your router swapped the private address for the shared public one going out, then swapped it back coming in.');}});
+run(d,q)}
+function inbound(){var cg=mode==='cg',pub=cg?'198.51.100.20':'203.0.113.7',q=[{label:'dst '+pub+':25565'},{go:3}];
+if(cg)q.push({drop:'<b>Dropped by your ISP.</b> The CGNAT box has no entry for this, and you can’t add one.'+(pf?' Your port forward is switched on, but the packet never reaches your router.':'')});
+else{q.push({go:2});
+if(pf)q.push({label:'dst 192.168.1.10:25565'},{go:0},{fn:function(){log('<b>Friend connected.</b> Your router had a port-forward rule, so it knew which device the packet was for.')}});
+else q.push({drop:'<b>Dropped by your router.</b> Nobody inside asked for this, so there’s no table entry and no way to know who it’s for. Try switching port forward on.'})}
+run(4,q)}
+function setMode(m){mode=m;tok=null;busy(false);ripples=[];tabR=[];tabC=[];logs=[];
+$('m-nat').setAttribute('aria-pressed',m==='nat');$('m-cg').setAttribute('aria-pressed',m==='cg');render();
+log(m==='cg'?'<b>CGNAT on.</b> Your ISP adds a second swap and shares one public address between many homes.':'<b>Home NAT.</b> Only your router swaps addresses. Send a request out to see it.')}
+$('m-nat').onclick=function(){setMode('nat')};$('m-cg').onclick=function(){setMode('cg')};
+$('n-out').onclick=function(){if(!tok)outbound()};$('n-in').onclick=function(){if(!tok)inbound()};
+$('n-pf').onclick=function(){pf=!pf;this.setAttribute('aria-pressed',pf);this.textContent='Port forward: '+(pf?'on':'off');render()};
+function resize(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+function P(i){return[ND[i].x*W,ND[i].y*H]}
+function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
+var last=0;
+function draw(ts){var dt=Math.min((ts-last)/1000||0,.05);last=ts;advance(dt);ctx.clearRect(0,0,W,H);var r0=Math.max(20,Math.min(W,H)*.065),cg=mode==='cg';
+ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';ctx.setLineDash([]);
+ED.forEach(function(e){if(!vis(e[0])||!vis(e[1]))return;var a=P(e[0]),b=P(e[1]);ctx.setLineDash(e[0]==3&&e[1]>4?[6,6]:[]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()});ctx.setLineDash([]);
+ctx.textAlign='center';ctx.textBaseline='middle';
+ND.forEach(function(n,i){if(!vis(i))return;var p=P(i);ctx.lineWidth=2.5;ctx.strokeStyle='#1B1740';
+if(n.e){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p[0],p[1],r0,0,6.283);ctx.fill();ctx.stroke();ctx.font=r0+'px serif';ctx.fillStyle='#000';ctx.fillText(n.e,p[0],p[1]+2)}
+else{var isp=i==3;ctx.fillStyle=isp?(cg?'#FFD23F':'#CFCBE8'):'#3D4BFF';rr(p[0]-r0*.9,p[1]-r0*.85,r0*1.8,r0*1.7,r0*.4);ctx.fill();ctx.stroke();ctx.fillStyle=isp?'#1B1740':'#fff';ctx.font='700 '+(r0*.5)+'px Unbounded,Arial,sans-serif';ctx.fillText(isp&&cg?'CG':n.s,p[0],p[1]+1)}
+ctx.font='700 12px "DM Sans",Arial,sans-serif';ctx.fillStyle='#1B1740';ctx.fillText(i==3&&cg?'ISP CGNAT':n.n,p[0],p[1]+r0+14);
+var a=addr(i);if(a){ctx.font='500 11px "DM Sans",Arial,sans-serif';ctx.fillStyle='#5C587D';ctx.fillText(a,p[0],p[1]+r0+28)}});
+ripples=ripples.filter(function(r){r.t+=dt;var p=P(r.n),k=r.t/.8;if(k>=1)return false;ctx.strokeStyle=(r.bad?'rgba(255,92,138,':'rgba(255,210,63,')+(1-k)+')';ctx.lineWidth=4;ctx.beginPath();ctx.arc(p[0],p[1],r0+k*30,0,6.283);ctx.stroke();return true});
+if(tok){var a=P(tok.cur),b=tok.to!=null?P(tok.to):a,x=a[0]+(b[0]-a[0])*tok.u,y=a[1]+(b[1]-a[1])*tok.u;
+ctx.fillStyle='#FFD23F';ctx.strokeStyle='#1B1740';ctx.lineWidth=2.5;rr(x-8,y-8,16,16,4);ctx.fill();ctx.stroke();
+if(tok.label){ctx.font='700 12px "DM Sans",Arial,sans-serif';var tw=ctx.measureText(tok.label).width+16,cx=Math.max(tw/2+4,Math.min(W-tw/2-4,x));ctx.fillStyle='#fff';ctx.lineWidth=2;rr(cx-tw/2,y-38,tw,22,11);ctx.fill();ctx.stroke();ctx.fillStyle='#1B1740';ctx.fillText(tok.label,cx,y-27)}}
+requestAnimationFrame(draw)}
+addEventListener('resize',resize);resize();setMode('nat');requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
