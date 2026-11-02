@@ -60,7 +60,14 @@ dl div{padding:26px 0;border-top:2.5px solid var(--ink)}
 dt{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.03em}
 dd{color:var(--muted);margin-top:6px;max-width:44ch}
 .fact{margin:56px 0 0;background:var(--sun);border:2.5px solid var(--ink);border-radius:22px;padding:28px 32px;font-family:var(--display);font-weight:500;font-size:clamp(17px,2vw,22px);line-height:1.35;letter-spacing:-.02em;transform:rotate(-1deg)}
-footer{padding:64px 0 48px;color:var(--muted);font-size:14px}
+footer{margin-top:40px;padding:0 0 48px;color:var(--muted);font-size:14px}
+footer a{color:var(--ink);font-weight:700}
+.divider{display:flex;align-items:center;gap:14px}
+.divider::before,.divider::after{content:"";flex:1;border-top:2.5px dashed var(--ink);opacity:.35}
+.divider i{width:18px;height:18px;background:var(--sun);border:2.5px solid var(--ink);border-radius:5px;display:block;transform:rotate(-8deg)}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;margin-top:22px}
+.foot .links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-note{margin-top:16px;max-width:62ch}
 @media (max-width:760px){
 canvas{aspect-ratio:4/3.6}
 .under{grid-template-columns:1fr}.under>div+div{border-left:0;border-top:2.5px solid var(--ink)}
@@ -104,6 +111,11 @@ input[type=range]{border:0;padding:0;height:30px;width:min(320px,100%);accent-co
 @media (max-width:760px){.lab-c{aspect-ratio:4/3.4}}
 .how{margin:28px 0 0;background:#fff;border:2.5px solid var(--ink);border-radius:22px;padding:4px 28px 10px;box-shadow:5px 5px 0 var(--ink)}
 .how summary{font-family:var(--display);font-size:17px;letter-spacing:-.02em;cursor:pointer;padding:18px 0;font-weight:700}
+.how summary{display:flex;align-items:center;gap:12px;list-style:none}
+.how summary::-webkit-details-marker{display:none}
+.how summary::before{content:"";flex:none;width:0;height:0;border-left:11px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.how[open] summary::before{transform:rotate(90deg)}
+.how.closing summary::before{transform:none}
 .how h4{font-family:var(--display);font-size:15px;letter-spacing:-.02em;margin:18px 0 6px}
 .how p{color:var(--muted);max-width:74ch;margin:0 0 8px}
 .how p b{color:var(--ink)}
@@ -521,9 +533,12 @@ input[type=range]{border:0;padding:0;height:30px;width:min(320px,100%);accent-co
 </section>
 </main>
 <footer>
-Packet Park is a toy. Real networks have millions of routers, and the times here are made up.
-<br>Made by <a href="https://github.com/dmxdexdj" style="color:var(--ink);font-weight:700">dmxdexdj</a>
-<br>Feedback or ideas for a new toy? <a href="mailto:hello@packetpark.wingnode.org" style="color:var(--ink);font-weight:700">hello@packetpark.wingnode.org</a>
+<div class="divider" aria-hidden="true"><i></i></div>
+<div class="foot">
+<span>Made by <a href="https://github.com/dmxdexdj">dmxdexdj</a></span>
+<span class="links"><a href="/info">About</a><a href="mailto:hello@packetpark.wingnode.org">Email me</a></span>
+</div>
+<p class="foot-note">Packet Park is a toy. Real networks have millions of routers, and the times here are made up.</p>
 </footer>
 </div>
 
@@ -927,6 +942,25 @@ if(d.st=='fly'){var px=x+(cx-x)*d.u;sq(c,px,cy,9,WD[i].col)}
 if(d.st=='wait'){var sw=Math.min(16,d.win)*15,bx=Math.max(sw/2+4,Math.min(W-sw/2-4,x))-sw/2,by=cy-r-30;for(var s=0;s<d.win;s++){c.fillStyle=s==d.s?SUN:'#fff';c.strokeStyle=INK;c.lineWidth=2;c.fillRect(bx+s*15,by,13,13);c.strokeRect(bx+s*15,by,13,13)}txt(c,'waits '+d.s+' slot'+(d.s==1?'':'s'),x,by-12,0,W)}
 if(d.st=='sense')chip(c,'channel busy, listening…',x,cy-r-26,W);if(d.st=='done')chip(c,'sent ✓',x,cy-r-26,W,'#DDF7EA')});
 if(wb>0){c.font=(40+(1-wb)*50)+'px serif';c.fillText('💥',cx,cy)}});
+})();
+</script>
+<script>
+/* smooth open/close for the "How it works" boxes */
+(function(){
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('details.how').forEach(function(d){
+var s=d.querySelector('summary'),busy=false;
+s.addEventListener('click',function(e){
+if(reduce||!d.animate)return;
+e.preventDefault();if(busy)return;busy=true;
+var opening=!d.open,start=d.offsetHeight,end;
+if(opening){d.open=true;end=d.offsetHeight}
+else{d.open=false;end=d.offsetHeight;d.open=true}
+d.style.overflow='hidden';if(!opening)d.classList.add('closing');
+var a=d.animate({height:[start+'px',end+'px']},{duration:380,easing:'cubic-bezier(.3,.7,.2,1)'});
+function done(){busy=false;d.style.overflow='';d.classList.remove('closing');if(!opening)d.open=false}
+a.onfinish=done;a.oncancel=done});
+});
 })();
 </script>
 </body>
