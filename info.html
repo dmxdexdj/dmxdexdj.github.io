@@ -67,6 +67,22 @@ footer{margin-top:88px;padding:0 0 48px;color:var(--muted);font-size:14px}
 .ob-js .rv.in{opacity:1;translate:0 0}
 .ob-js .rv.done{opacity:1;translate:none;transition:none}
 </style>
+<style>
+/* custom scrollbar */
+@supports selector(::-webkit-scrollbar){
+  ::-webkit-scrollbar{width:24px;height:24px}
+  ::-webkit-scrollbar-track{background:#E4DFFF}
+  ::-webkit-scrollbar-track:vertical{border-left:2.5px solid #1B1740}
+  ::-webkit-scrollbar-track:horizontal{border-top:2.5px solid #1B1740}
+  ::-webkit-scrollbar-thumb{background:#FF5C8A;background-clip:padding-box;border:5px solid transparent;border-radius:999px;box-shadow:inset 0 0 0 2.5px #1B1740;min-height:64px;min-width:64px}
+  ::-webkit-scrollbar-thumb:hover{background:#FFD23F;background-clip:padding-box}
+  ::-webkit-scrollbar-thumb:active{background:#3D4BFF;background-clip:padding-box}
+  ::-webkit-scrollbar-corner{background:#E4DFFF}
+}
+@supports not selector(::-webkit-scrollbar){
+  html{scrollbar-color:#FF5C8A #E4DFFF}
+}
+</style>
 </head>
 <body>
 <div class="wrap">
