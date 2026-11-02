@@ -61,6 +61,12 @@ footer{margin-top:88px;padding:0 0 48px;color:var(--muted);font-size:14px}
 @media (max-width:640px){.toys{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<style>
+/* fade in once, one block at a time */
+.ob-js .rv{opacity:0;translate:0 30px;transition:opacity .7s ease,translate .8s cubic-bezier(.2,.9,.2,1);transition-delay:var(--d,0s)}
+.ob-js .rv.in{opacity:1;translate:0 0}
+.ob-js .rv.done{opacity:1;translate:none;transition:none}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -119,5 +125,24 @@ footer{margin-top:88px;padding:0 0 48px;color:var(--muted);font-size:14px}
 </div>
 </footer>
 </div>
+<script>
+/* fade in once on load and as you scroll, one block at a time (never fades back out) */
+(function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+var q=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var groups=[q('main > h1,main > .lead')].concat(q('main > section').map(function(s){return[s]}));
+var ft=document.querySelector('footer');if(ft)groups.push([ft]);
+groups=groups.filter(function(g){return g.length});
+groups.forEach(function(g,gi){g.forEach(function(e,i){e.classList.add('rv');e.dataset.g=gi;if(g.length>1)e.style.setProperty('--d',(i*.08)+'s')})});
+var shown={};
+var io=new IntersectionObserver(function(en){en.forEach(function(x){
+var gi=x.target.dataset.g;
+if(x.isIntersecting&&!shown[gi]){shown[gi]=1;
+groups[gi].forEach(function(e){e.classList.add('in');io.unobserve(e);setTimeout(function(){e.classList.add('done')},1600)})}})},
+{threshold:.1,rootMargin:'0px 0px -4% 0px'});
+groups.forEach(function(g){g.forEach(function(e){io.observe(e)})});
+document.body.classList.add('ob-js');
+})();
+</script>
 </body>
 </html>
