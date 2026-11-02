@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Packet Park: a little playground for networking</title>
+<meta name="description" content="Send a packet across the internet, break routers and watch it find another way. Interactive toys for DNS, NAT, VPNs, firewalls, botnets, IPv6 and Wi-Fi.">
+<meta name="author" content="dmxdexdj">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Packet Park: a little playground for networking">
+<meta property="og:description" content="Send a packet across the internet, break routers and watch it find another way. Interactive toys for DNS, NAT, VPNs, firewalls, botnets, IPv6 and Wi-Fi.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Packet Park: a little playground for networking">
+<meta name="twitter:description" content="Send a packet across the internet, break routers and watch it find another way. Interactive toys for DNS, NAT, VPNs, firewalls, botnets, IPv6 and Wi-Fi.">
+<meta name="theme-color" content="#F1EEFF">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -384,6 +393,8 @@ input[type=range]{border:0;padding:0;height:30px;width:min(320px,100%);accent-co
 <p>Between you and the VPN server everything is encrypted. Someone on the café Wi-Fi, or your internet provider, can see that you’re talking to a VPN but not which sites you visit. The catch is that the VPN company can now see that instead, so you’re moving trust from one company to another, not removing it.</p>
 <h4>What a VPN doesn’t do</h4>
 <p>It doesn’t make you anonymous. Logging in, cookies and your browser can still identify you. Streaming services also try to spot and block the addresses of known VPN servers, so it often doesn’t work. Some services forbid this in their terms, so check before you try it for real.</p>
+<h4>A heads up</h4>
+<p>This is a demo of how a VPN works. Using one to get around a streaming service’s region limits can break its terms of use, so check the rules before trying it for real.</p>
 <h4>In the demo</h4>
 <p>The purple area is your country and the green area is the UK. The glowing pipe is the encrypted tunnel. Try it with the VPN off, then on, and compare the two lists on the right.</p>
 </details>
@@ -507,7 +518,11 @@ input[type=range]{border:0;padding:0;height:30px;width:min(320px,100%);accent-co
 <div class="cx eq"><span class="lb">Why the Wi-Fi drops when you reheat lunch</span><div class="row"><div class="tk">📶 Wi-Fi<small>2.4 GHz band</small></div><div class="op">≈</div><div class="tk">🍲 Microwave<small>about 2.45 GHz</small></div><div class="op">=</div><div class="tk bad">💥 Interference</div></div><p>They use almost the same radio frequency, so a microwave oven can leak noise that drowns out nearby Wi-Fi.</p></div>
 </section>
 </main>
-<footer>Packet Park is a toy. Real networks have millions of routers, and the times here are made up.</footer>
+<footer>
+Packet Park is a toy. Real networks have millions of routers, and the times here are made up.
+<br>Made by <a href="https://github.com/dmxdexdj" style="color:var(--ink);font-weight:700">dmxdexdj</a>
+<br>Feedback or ideas for a new toy? <a href="mailto:hello@packetpark.wingnode.org" style="color:var(--ink);font-weight:700">hello@packetpark.wingnode.org</a>
+</footer>
 </div>
 
 <script>
