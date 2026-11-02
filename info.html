@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Packet Park</title>
+<meta name="description" content="Why Packet Park exists, what it's for, and who made it.">
+<meta name="author" content="dmxdexdj">
+<link rel="canonical" href="https://packetpark.wingnode.org/info">
+<meta property="og:url" content="https://packetpark.wingnode.org/info">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About Packet Park">
+<meta property="og:description" content="Why Packet Park exists, what it's for, and who made it.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F1EEFF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1EEFF;--ink:#1B1740;--blue:#3D4BFF;--pink:#FF5C8A;--sun:#FFD23F;--white:#fff;--muted:#5C587D;
+--display:'Unbounded','Arial Black',Arial,sans-serif;--body:'DM Sans','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:8px}
+a{color:var(--ink);font-weight:700}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header{padding:28px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-family:var(--display);font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.logo i{width:22px;height:22px;background:var(--sun);border:2.5px solid var(--ink);border-radius:6px;display:inline-block;transform:rotate(-8deg)}
+.back{font-weight:700;font-size:15px;border:2.5px solid var(--ink);border-radius:12px;padding:8px 14px;background:#fff;box-shadow:3px 3px 0 var(--ink);text-decoration:none;transition:transform .1s,box-shadow .1s}
+.back:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,5.4vw,60px);line-height:1.08;letter-spacing:-.04em;margin-top:24px;max-width:16ch}
+.lead{margin-top:20px;font-size:19px;color:var(--muted);max-width:54ch}
+section{margin-top:64px}
+h2{font-family:var(--display);font-size:clamp(20px,2.8vw,28px);letter-spacing:-.04em;line-height:1.15;font-weight:700;margin-bottom:14px}
+p{color:var(--muted);max-width:62ch;margin-bottom:12px}
+p b{color:var(--ink)}
+.card{border:2.5px solid var(--ink);border-radius:22px;background:#fff;box-shadow:5px 5px 0 var(--ink);padding:24px 28px}
+.goal{background:var(--sun);border:2.5px solid var(--ink);border-radius:22px;padding:26px 30px;font-family:var(--display);font-weight:500;font-size:clamp(17px,2.2vw,24px);line-height:1.35;letter-spacing:-.02em;transform:rotate(-1deg);max-width:62ch}
+.toys{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.toys a{display:block;text-decoration:none;border:2.5px solid var(--ink);border-radius:14px;background:#fff;padding:12px 16px;font-weight:700;box-shadow:3px 3px 0 var(--ink)}
+.toys a small{display:block;font-weight:500;color:var(--muted);font-size:13.5px}
+.socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;height:44px;padding:0 18px;border-radius:12px;border:2.5px solid var(--ink);background:#fff;box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.sun{background:var(--sun)}
+.btn.pink{background:var(--pink);color:#fff}
+.btn.gh{background:var(--ink);color:#fff}
+.btn.dc{background:#5865F2;color:#fff}
+.btn.ig{background:var(--ink);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.btn.ig::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(45deg,#F9A03F,#E1306C 55%,#833AB4)}
+.ph{background:#FFF4D1;border:2px dashed var(--ink);border-radius:6px;padding:0 4px;color:var(--ink)}
+footer{margin-top:88px;padding:0 0 48px;color:var(--muted);font-size:14px}
+.divider{display:flex;align-items:center;gap:14px}
+.divider::before,.divider::after{content:"";flex:1;border-top:2.5px dashed var(--ink);opacity:.35}
+.divider i{width:18px;height:18px;background:var(--sun);border:2.5px solid var(--ink);border-radius:5px;display:block;transform:rotate(-8deg)}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;margin-top:22px}
+.foot .links{display:flex;gap:18px;flex-wrap:wrap}
+@media (max-width:640px){.toys{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="logo" href="/"><i></i>packet park</a>
+<a class="back" href="/">← Back to the park</a>
+</header>
+<main>
+<h1>About Packet Park</h1>
+<p class="lead">Networking is one of those things that runs the whole world and almost nobody gets to see it working. This is my attempt at fixing that.</p>
+
+<section>
+<h2>The goal</h2>
+<div class="goal">Make networking click for people who think it’s boring, with no jargon walls and nothing to install.</div>
+</section>
+
+<section>
+<h2>What’s inside</h2>
+<p>Everything on the main page is a toy you can play with. Jump straight to one:</p>
+<ul class="toys">
+<li><a href="/">Send a packet<small>Break routers, watch the detour</small></a></li>
+<li><a href="/#journey">DNS and traceroute<small>How names become addresses</small></a></li>
+<li><a href="/#nat">NAT and CGNAT<small>Why your devices have fake addresses</small></a></li>
+<li><a href="/#lab">The lab<small>HTTPS, VPN, firewall, botnet, IPv6, Wi-Fi</small></a></li>
+</ul>
+</section>
+
+<section>
+<h2>Who made it</h2>
+<div class="card">
+<p><b>Made by dmxdexdj.</b> Find me here:</p>
+<div class="socials">
+<a class="btn gh" href="https://github.com/dmxdexdj" rel="me noopener">GitHub</a>
+<a class="btn dc" href="https://discord.com/users/1147325431742218310" rel="me noopener">Discord</a>
+<a class="btn ig" href="https://www.instagram.com/dmxdexdj/" rel="me noopener">Instagram</a>
+<a class="btn sun" href="mailto:hello@packetpark.wingnode.org">Email me</a>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Got an idea?</h2>
+<p>Want a toy about the TCP handshake, subnetting, VLANs, or something else? Email <a href="mailto:hello@packetpark.wingnode.org">hello@packetpark.wingnode.org</a> and tell me what you’d like to see.</p>
+</section>
+
+<section>
+<h2>Good to know</h2>
+<p>Packet Park is a toy. The addresses are made up, the timings are invented, and real networks are far bigger and messier. It’s here to build intuition, not to replace a textbook.</p>
+</section>
+</main>
+<footer>
+<div class="divider" aria-hidden="true"><i></i></div>
+<div class="foot">
+<span>Made by <a href="https://github.com/dmxdexdj">dmxdexdj</a></span>
+<span class="links"><a href="mailto:hello@packetpark.wingnode.org">Email me</a><a href="/">← Back to the park</a></span>
+</div>
+</footer>
+</div>
+</body>
+</html>
