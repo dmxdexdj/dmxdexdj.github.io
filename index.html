@@ -171,6 +171,12 @@ input[type=range]{border:0;padding:0;height:30px;width:min(320px,100%);accent-co
 
 
 
+<style>
+/* fade in once on scroll */
+.ob-js .rv{opacity:0;translate:0 30px;transition:opacity .7s ease,translate .8s cubic-bezier(.2,.9,.2,1);transition-delay:var(--d,0s)}
+.ob-js .rv.in{opacity:1;translate:0 0}
+.ob-js .rv.done{opacity:1;translate:none;transition:none}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -961,6 +967,34 @@ var a=d.animate({height:[start+'px',end+'px']},{duration:380,easing:'cubic-bezie
 function done(){busy=false;d.style.overflow='';d.classList.remove('closing');if(!opening)d.open=false}
 a.onfinish=done;a.oncancel=done});
 });
+})();
+</script>
+<script>
+/* fade in once as you scroll, one block at a time (never fades back out) */
+(function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+var LEAD='h3,.intro,h4.sub,.toyhead',TRAIL='.note',groups=[];
+function build(container,skip){
+var cur=[],has=false;
+function flush(){if(cur.length)groups.push(cur);cur=[];has=false}
+Array.prototype.slice.call(container.children).forEach(function(el){
+if(skip&&el.matches(skip))return;
+if(el.matches(LEAD)){if(has)flush();cur.push(el)}
+else if(el.matches(TRAIL)){if(cur.length)cur.push(el);else if(groups.length)groups[groups.length-1].push(el)}
+else{if(has)flush();cur.push(el);has=true}});
+flush()}
+var main=document.querySelector('main');
+build(main,'h1,.lead,section');
+Array.prototype.slice.call(main.querySelectorAll(':scope > section')).forEach(function(s){build(s)});
+groups.forEach(function(g,gi){g.forEach(function(e){e.classList.add('rv');e.dataset.g=gi})});
+var shown={};
+var io=new IntersectionObserver(function(en){en.forEach(function(x){
+var gi=x.target.dataset.g;
+if(x.isIntersecting&&!shown[gi]){shown[gi]=1;
+groups[gi].forEach(function(e){e.classList.add('in');io.unobserve(e);setTimeout(function(){e.classList.add('done')},1600)})}})},
+{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+groups.forEach(function(g){g.forEach(function(e){io.observe(e)})});
+document.body.classList.add('ob-js');
 })();
 </script>
 </body>
