@@ -1033,17 +1033,17 @@ document.body.classList.add('ob-js');
 /* jump dock + back to top */
 (function(){
 var D=document,calm=matchMedia('(prefers-reduced-motion: reduce)').matches,beh=calm?'auto':'smooth';
-var secs=[['Top',null],['Glossary',D.querySelector('main > section')],['DNS and routes',D.getElementById('journey')],['NAT',D.getElementById('nat')],['The lab',D.getElementById('lab')]]
+var secs=[['Top',null],['Glossary',D.querySelector('main > section')],['DNS and routes',D.getElementById('journey')],['NAT',D.getElementById('nat')],['The lab',D.getElementById('lab')],['Bottom',D.querySelector('footer')]]
 .filter(function(s){return s[0]==='Top'||s[1]});
 var dock=D.createElement('nav');dock.id='dock';dock.setAttribute('aria-label','Jump to section');
 secs.forEach(function(s){
 var b=D.createElement('button');b.type='button';b.setAttribute('data-l',s[0]);b.setAttribute('aria-label',s[0]);
-b.onclick=function(){if(s[1])s[1].scrollIntoView({behavior:beh,block:'start'});else scrollTo({top:0,behavior:beh})};
+b.onclick=function(){if(s[0]==='Bottom')scrollTo({top:D.documentElement.scrollHeight,behavior:beh});else if(s[1])s[1].scrollIntoView({behavior:beh,block:'start'});else scrollTo({top:0,behavior:beh})};
 dock.appendChild(b)});
 D.body.appendChild(dock);
 var dots=[].slice.call(dock.querySelectorAll('button')),tick=false;
 function update(){tick=false;
-var act=0;secs.forEach(function(s,i){if(s[1]&&s[1].getBoundingClientRect().top<innerHeight*.45)act=i});
+var act=0,last=secs.length-1;secs.forEach(function(s,i){if(i<last&&s[1]&&s[1].getBoundingClientRect().top<innerHeight*.45)act=i});if(innerHeight+scrollY>=D.documentElement.scrollHeight-60)act=last;
 dots.forEach(function(b,i){b.classList.toggle('on',i===act);if(i===act)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current')})}
 addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});
 addEventListener('resize',update);update();
