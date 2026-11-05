@@ -20,7 +20,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1
 header{padding:28px 0}
 .logo{font-family:var(--display);font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none}
 .logo i{width:22px;height:22px;background:var(--sun);border:2.5px solid var(--ink);border-radius:6px;display:inline-block;transform:rotate(-8deg)}
-main{flex:1;display:grid;place-items:center;padding:12px 0 32px}
+main.wrap{flex:1;display:grid;place-items:center;padding:12px 24px 56px}
 .card{width:100%;max-width:720px;background:var(--white);border:2.5px solid var(--ink);border-radius:28px;box-shadow:7px 7px 0 var(--ink);overflow:hidden}
 .route{position:relative;height:150px;background:#FBFAFF;border-bottom:2.5px solid var(--ink);overflow:hidden}
 .line{position:absolute;left:12%;right:12%;top:68px;border-top:3px dashed var(--ink);opacity:.35}
@@ -45,7 +45,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(20px,3.4vw,28px);l
 .act{margin-top:24px}
 a.btn{display:inline-block;font:inherit;font-weight:700;font-size:16px;color:#fff;background:var(--blue);text-decoration:none;padding:12px 22px;border-radius:12px;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
 a.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
-footer{padding:0 0 40px;color:var(--muted);font-size:14px}
+footer{margin-top:0;padding:0 0 40px;color:var(--muted);font-size:14px}
 footer a{color:var(--ink);font-weight:700}
 .divider{display:flex;align-items:center;gap:14px}
 .divider::before,.divider::after{content:"";flex:1;border-top:2.5px dashed var(--ink);opacity:.35}
